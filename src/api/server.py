@@ -40,7 +40,8 @@ from src.analisis.ponderador import (
     get_pesos,
     set_pesos,
     formatear_salida,
-    get_reportes_activos
+    get_reportes_activos,
+    calcular_score_prediccion_ia
 )
 from src.firebase.client import (
     create_reporte,
@@ -50,6 +51,8 @@ from src.firebase.client import (
 )
 from src.analisis.graficos import generar_mapa_buses, generar_mapa_anomalias, generar_todas_graficas
 from src.api.bus_tracker import BusTracker
+from src.ia.prediction_service import PredictionService
+from src.ia.schemas import PrediccionRequest, ReporteAppInput
 from threading import Thread
 import time
 
@@ -73,6 +76,12 @@ class ReporteVoto(BaseModel):
 class PesosUpdate(BaseModel):
     peso_deteccion: float
     peso_reporte: float
+    peso_prediccion_ia: float = 0.2
+
+class PrediccionRequestIA(BaseModel):
+    zona: str = "Bogotá"
+    publicaciones: List[str] = []
+    reportes_app: List[ReporteAppInput] = []
 
 # Endpoints - Health
 @app.get("/health")
@@ -157,9 +166,48 @@ def ver_pesos():
 def actualizar_pesos(pesos: PesosUpdate):
     """Actualizar pesos."""
     try:
-        return set_pesos(pesos.peso_deteccion, pesos.peso_reporte)
+        return set_pesos(pesos.peso_deteccion, pesos.peso_reporte, pesos.peso_prediccion_ia)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+# Endpoints - Predicción IA
+@app.post("/ia/prediccion")
+def prediccion_ia(request: PrediccionRequestIA):
+    """Predicción de riesgo usando NLP + reglas expertas."""
+    try:
+        prediction_service = PredictionService()
+        pred_request = PrediccionRequest(
+            zona=request.zona,
+            publicaciones=request.publicaciones,
+            reportes_app=request.reportes_app
+        )
+        return prediction_service.predecir_riesgo(pred_request)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/ia/prediccion/demo")
+def prediccion_demo(zona: str = "Portal Norte"):
+    """Predicción de demostración."""
+    try:
+        publicaciones = [
+            f"Se reporta bloqueo en {zona} por manifestación",
+            "Hay paro de transportadores y congestión fuerte"
+        ]
+        prediction_service = PredictionService()
+        request = PrediccionRequest(zona=zona, publicaciones=publicaciones, reportes_app=[])
+        return prediction_service.predecir_riesgo(request)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/ia/prediccion/score")
+def prediccion_score(textos: Optional[List[str]] = None):
+    """Get prediction score only."""
+    try:
+        score = calcular_score_prediccion_ia(textos)
+        nivel = "alto" if score > 60 else "medio" if score > 30 else "bajo"
+        return {"score": score, "nivel": nivel}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # Endpoints - Gráficos
 @app.get("/buses/grafica")
@@ -218,7 +266,7 @@ def estado_monitoreo():
 # Inicialización
 print("=" * 60)
 print("  API DE ANOMALÍAS TRANSMILENIO v2.0")
-print("  + DETECCIÓN + REPORTES + PONDERADO")
+print("  + DETECCIÓN + REPORTES + PREDICCIÓN IA")
 print("=" * 60)
 
 if __name__ == "__main__":
@@ -241,6 +289,9 @@ if __name__ == "__main__":
     print(f"  PUT /config/ponderado  - Actualizar pesos")
     print(f"  GET /buses/grafica     - Mapa de buses")
     print(f"  GET /anomalias/grafica  - Mapa de anomalías")
+    print(f"  POST /ia/prediccion    - Predicción IA")
+    print(f"  GET /ia/prediccion/demo - Predicción demo")
+    print(f"  GET /ia/prediccion/score - Score predicción")
     print("=" * 60)
     print(f"Servidor: http://localhost:{port}")
     print("=" * 60)

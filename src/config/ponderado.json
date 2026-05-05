@@ -1,4 +1,5 @@
 {
-  "peso_deteccion": 0.6,
-  "peso_reporte": 0.4
+  "peso_deteccion": 0.5,
+  "peso_reporte": 0.3,
+  "peso_prediccion_ia": 0.2
 }

@@ -10,6 +10,8 @@ from datetime import datetime
 from src.database import BusDatabase
 from src.analisis.anomaly_detector import detectar_anomalias
 from src.firebase.client import get_all_reportes, get_reporte_by_id
+from src.ia.prediction_service import PredictionService
+from src.ia.schemas import PrediccionRequest
 
 # Get base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -17,8 +19,9 @@ PONDERADO_CONFIG = os.path.join(BASE_DIR, "src", "config", "ponderado.json")
 
 # Default weights
 PESOS_DEFAULT = {
-    "peso_deteccion": 0.6,
-    "peso_reporte": 0.4
+    "peso_deteccion": 0.5,
+    "peso_reporte": 0.3,
+    "peso_prediccion_ia": 0.2
 }
 
 def cargar_pesos() -> Dict[str, float]:
@@ -37,14 +40,15 @@ def get_pesos() -> Dict[str, float]:
     """Get current weights."""
     return cargar_pesos()
 
-def set_pesos(peso_deteccion: float, peso_reporte: float) -> Dict[str, float]:
+def set_pesos(peso_deteccion: float, peso_reporte: float, peso_prediccion_ia: float = 0.2) -> Dict[str, float]:
     """Set new weights."""
-    if peso_deteccion + peso_reporte != 1.0:
+    if peso_deteccion + peso_reporte + peso_prediccion_ia != 1.0:
         raise ValueError("Los pesos deben sumar 1.0")
     
     pesos = {
         "peso_deteccion": peso_deteccion,
-        "peso_reporte":peso_reporte
+        "peso_reporte": peso_reporte,
+        "peso_prediccion_ia": peso_prediccion_ia
     }
     guardar_pesos(pesos)
     return pesos
@@ -102,7 +106,38 @@ def get_reportes_as_anomalias() -> List[Dict]:
     
     return anomalias
 
-def detectar_anomalias_ponderadas(db: BusDatabase = None) -> Dict[str, Any]:
+
+def calcular_score_prediccion_ia(textos: List[str] = None) -> float:
+    """Calculate prediction score using IA (NLP + expert rules)."""
+    try:
+        prediction_service = PredictionService()
+        
+        if textos is None or len(textos) == 0:
+            default_textos = [
+                "TransMilenio operando normalmente",
+                "Sin reporte de anomalías",
+                "Movilidad fluida en la ciudad"
+            ]
+            request = PrediccionRequest(
+                zona="Bogotá",
+                publicaciones=default_textos,
+                reportes_app=[]
+            )
+        else:
+            request = PrediccionRequest(
+                zona="Bogotá",
+                publicaciones=textos,
+                reportes_app=[]
+            )
+        
+        response = prediction_service.predecir_riesgo(request)
+        return float(response.probabilidad)
+    except Exception as e:
+        print(f"Error in prediction IA: {e}")
+        return 0.0
+
+
+def detectar_anomalias_ponderadas(db: BusDatabase = None, textos_ia: List[str] = None) -> Dict[str, Any]:
     """
     Main function - combines automatic detection + user reports.
     Returns weighted anomaly analysis.
@@ -110,6 +145,7 @@ def detectar_anomalias_ponderadas(db: BusDatabase = None) -> Dict[str, Any]:
     pesos = get_pesos()
     peso_det = pesos["peso_deteccion"]
     peso_rep = pesos["peso_reporte"]
+    peso_pred = pesos.get("peso_prediccion_ia", 0.2)
     
     ahora = datetime.now()
     
@@ -145,8 +181,11 @@ def detectar_anomalias_ponderadas(db: BusDatabase = None) -> Dict[str, Any]:
     except Exception as e:
         print(f"Error in reports: {e}")
     
-    # Calculate combined score
-    score_ponderado = (deteccion_score * peso_det) + (reporte_score * peso_rep)
+    # Get IA prediction score
+    prediccion_ia_score = calcular_score_prediccion_ia(textos_ia)
+    
+    # Calculate combined score with 3 weights
+    score_ponderado = (deteccion_score * peso_det) + (reporte_score * peso_rep) + (prediccion_ia_score * peso_pred)
     
     # Determine overall status
     if score_ponderado >= 70:
@@ -171,6 +210,10 @@ def detectar_anomalias_ponderadas(db: BusDatabase = None) -> Dict[str, Any]:
             "cantidad": len(reportes_anomalias),
             "anomalias": reportes_anomalias
         },
+        "prediccion_ia": {
+            "score": round(prediccion_ia_score, 1),
+            "peso": peso_pred
+        },
         "pesos": pesos,
         "resumen": {
             "total_detecciones": len(deteccion_anomalias),
@@ -188,7 +231,7 @@ def formatear_salida(analisis: Dict) -> str:
     """Format output for console."""
     lines = []
     lines.append("=" * 60)
-    lines.append("    ANÁLISIS PONDERADO - DETECCIÓN + REPORTES")
+    lines.append("    ANÁLISIS PONDERADO - 3 FUENTES")
     lines.append("=" * 60)
     lines.append(f"Fecha: {analisis['timestamp']}")
     lines.append(f"Estado: {analisis['estado']}")
@@ -203,6 +246,10 @@ def formatear_salida(analisis: Dict) -> str:
     rep = analisis.get("reportes", {})
     lines.append(f"[REPORTES USUARIOS] {rep.get('score', 0)}% (peso: {rep.get('peso', 0)*100}%)")
     lines.append(f"  Reportes activos: {rep.get('cantidad', 0)}")
+    lines.append("")
+    
+    pred = analisis.get("prediccion_ia", {})
+    lines.append(f"[PREDICCIÓN IA] {pred.get('score', 0)}% (peso: {pred.get('peso', 0)*100}%)")
     lines.append("")
     
     res = analisis.get("resumen", {})
