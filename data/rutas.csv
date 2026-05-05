@@ -1,0 +1,1387 @@
+Route_ID,Final_Destination,Stop_Order,Station_Name
+1,Universidades – CityU,1,Portal El Dorado – C.C. Nuestro Bogotá
+1,Universidades – CityU,2,Modelia
+1,Universidades – CityU,3,Normandía
+1,Universidades – CityU,4,Avenida Rojas - UNISALESIANA
+1,Universidades – CityU,5,El Tiempo – Cámara de Comercio de Bogotá
+1,Universidades – CityU,6,Salitre - El Greco
+1,Universidades – CityU,7,CAN
+1,Universidades – CityU,8,Gobernación
+1,Universidades – CityU,9,Quinta Paredes
+1,Universidades – CityU,10,Corferias
+1,Universidades – CityU,11,Ciudad Universitaria - Lotería de Bogotá
+1,Universidades – CityU,12,Concejo de Bogotá
+1,Universidades – CityU,13,Centro Memoria
+1,Universidades – CityU,14,Universidades – CityU
+1,Portal El Dorado – C.C. Nuestro Bogotá,1,Universidades – CityU
+1,Portal El Dorado – C.C. Nuestro Bogotá,2,Centro Memoria
+1,Portal El Dorado – C.C. Nuestro Bogotá,3,Concejo de Bogotá
+1,Portal El Dorado – C.C. Nuestro Bogotá,4,Ciudad Universitaria - Lotería de Bogotá
+1,Portal El Dorado – C.C. Nuestro Bogotá,5,Corferias
+1,Portal El Dorado – C.C. Nuestro Bogotá,6,Quinta Paredes
+1,Portal El Dorado – C.C. Nuestro Bogotá,7,Gobernación
+1,Portal El Dorado – C.C. Nuestro Bogotá,8,CAN
+1,Portal El Dorado – C.C. Nuestro Bogotá,9,Salitre - El Greco
+1,Portal El Dorado – C.C. Nuestro Bogotá,10,El Tiempo – Cámara de Comercio de Bogotá
+1,Portal El Dorado – C.C. Nuestro Bogotá,11,Avenida Rojas - UNISALESIANA
+1,Portal El Dorado – C.C. Nuestro Bogotá,12,Normandía
+1,Portal El Dorado – C.C. Nuestro Bogotá,13,Modelia
+1,Portal El Dorado – C.C. Nuestro Bogotá,14,Portal El Dorado – C.C. Nuestro Bogotá
+2,Museo Nacional,1,Portal 20 de Julio
+2,Museo Nacional,2,Country Sur
+2,Museo Nacional,3,AV. 1 Mayo
+2,Museo Nacional,4,Ciudad Jardín - UAN
+2,Museo Nacional,5,Policarpa
+2,Museo Nacional,6,San Bernardo
+2,Museo Nacional,7,Bicentenario
+2,Museo Nacional,8,San Victorino
+2,Museo Nacional,9,Las Nieves
+2,Museo Nacional,10,San Diego
+2,Museo Nacional,11,Museo Nacional
+2,Portal 20 de Julio,1,Museo Nacional
+2,Portal 20 de Julio,2,San Diego
+2,Portal 20 de Julio,3,Las Nieves
+2,Portal 20 de Julio,4,San Victorino
+2,Portal 20 de Julio,5,Bicentenario
+2,Portal 20 de Julio,6,San Bernardo
+2,Portal 20 de Julio,7,Policarpa
+2,Portal 20 de Julio,8,Ciudad Jardín - UAN
+2,Portal 20 de Julio,9,AV. 1 Mayo
+2,Portal 20 de Julio,10,Country Sur
+2,Portal 20 de Julio,11,Portal 20 de Julio
+3,Portal Tunal,1,Corferias
+3,Portal Tunal,2,Ciudad Universitaria - Lotería de Bogotá
+3,Portal Tunal,3,Concejo de Bogotá
+3,Portal Tunal,4,Centro Memoria
+3,Portal Tunal,5,Calle 22
+3,Portal Tunal,6,AV. Jiménez - Caracas
+3,Portal Tunal,7,Hortúa
+3,Portal Tunal,8,Nariño
+3,Portal Tunal,9,Fucha
+3,Portal Tunal,10,Restrepo
+3,Portal Tunal,11,Olaya
+3,Portal Tunal,12,Quiroga
+3,Portal Tunal,13,Calle 40 Sur
+3,Portal Tunal,14,Santa Lucía
+3,Portal Tunal,15,Biblioteca
+3,Portal Tunal,16,Parque
+3,Portal Tunal,17,Portal Tunal
+3,Corferias,1,Portal Tunal
+3,Corferias,2,Parque
+3,Corferias,3,Biblioteca
+3,Corferias,4,Santa Lucía
+3,Corferias,5,Calle 40 Sur
+3,Corferias,6,Quiroga
+3,Corferias,7,Olaya
+3,Corferias,8,Restrepo
+3,Corferias,9,Fucha
+3,Corferias,10,Nariño
+3,Corferias,11,Hortúa
+3,Corferias,12,AV. Jiménez - Caracas
+3,Corferias,13,Calle 22
+3,Corferias,14,Centro Memoria
+3,Corferias,15,Concejo de Bogotá
+3,Corferias,16,Ciudad Universitaria - Lotería de Bogotá
+3,Corferias,17,Corferias
+4,Portal Sur - JFK Coop. Financiera,1,Héroes
+4,Portal Sur - JFK Coop. Financiera,2,Polo - FINCOMERCIO
+4,Portal Sur - JFK Coop. Financiera,3,Escuela Militar
+4,Portal Sur - JFK Coop. Financiera,4,Calle 75 - Zona M
+4,Portal Sur - JFK Coop. Financiera,5,AV. Chile
+4,Portal Sur - JFK Coop. Financiera,6,7 de Agosto
+4,Portal Sur - JFK Coop. Financiera,7,Movistar Arena
+4,Portal Sur - JFK Coop. Financiera,8,Campín - UAN
+4,Portal Sur - JFK Coop. Financiera,9,Universidad Nacional
+4,Portal Sur - JFK Coop. Financiera,10,AV. ElDorado
+4,Portal Sur - JFK Coop. Financiera,11,CAD
+4,Portal Sur - JFK Coop. Financiera,12,Paloquemao
+4,Portal Sur - JFK Coop. Financiera,13,Ricaurte - NQS
+4,Portal Sur - JFK Coop. Financiera,14,Comuneros
+4,Portal Sur - JFK Coop. Financiera,15,Santa Isabel
+4,Portal Sur - JFK Coop. Financiera,16,NQS - Calle 30 S
+4,Portal Sur - JFK Coop. Financiera,17,NQS - Calle 38A S
+4,Portal Sur - JFK Coop. Financiera,18,General Santander
+4,Portal Sur - JFK Coop. Financiera,19,Alquería
+4,Portal Sur - JFK Coop. Financiera,20,Venecia
+4,Portal Sur - JFK Coop. Financiera,21,Sevillana
+4,Portal Sur - JFK Coop. Financiera,22,CC Paseo Villa del Río - Madelena
+4,Portal Sur - JFK Coop. Financiera,23,Perdomo
+4,Portal Sur - JFK Coop. Financiera,24,Portal Sur - JFK Coop. Financiera
+4,Héroes,1,Portal Sur - JFK Coop. Financiera
+4,Héroes,2,Perdomo
+4,Héroes,3,CC Paseo Villa del Río - Madelena
+4,Héroes,4,Sevillana
+4,Héroes,5,Venecia
+4,Héroes,6,Alquería
+4,Héroes,7,General Santander
+4,Héroes,8,NQS - Calle 38A S
+4,Héroes,9,NQS - Calle 30 S
+4,Héroes,10,Santa Isabel
+4,Héroes,11,Comuneros
+4,Héroes,12,Ricaurte - NQS
+4,Héroes,13,Paloquemao
+4,Héroes,14,CAD
+4,Héroes,15,AV. ElDorado
+4,Héroes,16,Universidad Nacional
+4,Héroes,17,Campín - UAN
+4,Héroes,18,Movistar Arena
+4,Héroes,19,7 de Agosto
+4,Héroes,20,AV. Chile
+4,Héroes,21,Calle 75 - Zona M
+4,Héroes,22,Escuela Militar
+4,Héroes,23,Polo - FINCOMERCIO
+4,Héroes,24,Héroes
+5,Portal Américas,1,Calle 22
+5,Portal Américas,2,AV. Jiménez - CL 13
+5,Portal Américas,3,De La Sabana
+5,Portal Américas,4,San Facon Carrera 22
+5,Portal Américas,5,Ricaurte - CL 13
+5,Portal Américas,6,CDS - Carrera 32
+5,Portal Américas,7,Zona Industrial
+5,Portal Américas,8,Carrera 43 - Comapan
+5,Portal Américas,9,Puente Aranda
+5,Portal Américas,10,Distrito Grafiti
+5,Portal Américas,11,Pradera - Plaza Central
+5,Portal Américas,12,Marsella
+5,Portal Américas,13,AV. Américas - AV. Boyacá
+5,Portal Américas,14,Mandalay
+5,Portal Américas,15,Banderas
+5,Portal Américas,16,Transversal 86
+5,Portal Américas,17,Biblioteca Tintal
+5,Portal Américas,18,Portal Américas
+5,Calle 22,1,Portal Américas
+5,Calle 22,2,Biblioteca Tintal
+5,Calle 22,3,Transversal 86
+5,Calle 22,4,Banderas
+5,Calle 22,5,Mandalay
+5,Calle 22,6,AV. Américas - AV. Boyacá
+5,Calle 22,7,Marsella
+5,Calle 22,8,Pradera - Plaza Central
+5,Calle 22,9,Distrito Grafiti
+5,Calle 22,10,Puente Aranda
+5,Calle 22,11,Carrera 43 - Comapan
+5,Calle 22,12,Zona Industrial
+5,Calle 22,13,CDS - Carrera 32
+5,Calle 22,14,Ricaurte - CL 13
+5,Calle 22,15,San Facon Carrera 22
+5,Calle 22,16,De La Sabana
+5,Calle 22,17,AV. Jiménez - CL 13
+5,Calle 22,18,Calle 22
+6,Universidades – CityU,1,Portal 80
+6,Universidades – CityU,2,Quirigua
+6,Universidades – CityU,3,Carrera 90
+6,Universidades – CityU,4,AV. Cali
+6,Universidades – CityU,5,Granja - Kr 77
+6,Universidades – CityU,6,Minuto de Dios
+6,Universidades – CityU,7,AV. Boyacá
+6,Universidades – CityU,8,Ferias
+6,Universidades – CityU,9,AV. 68
+6,Universidades – CityU,10,Carrera 53
+6,Universidades – CityU,11,Carrera 47
+6,Universidades – CityU,12,Escuela Militar
+6,Universidades – CityU,13,Polo - FINCOMERCIO
+6,Universidades – CityU,14,Calle 76 - San Felipe
+6,Universidades – CityU,15,Flores – Areandina
+6,Universidades – CityU,16,Calle 57
+6,Universidades – CityU,17,Marly
+6,Universidades – CityU,18,Calle 45 - American School Way
+6,Universidades – CityU,19,Calle 34
+6,Universidades – CityU,20,Universidades – CityU
+6,Portal 80,1,Universidades – CityU
+6,Portal 80,2,Calle 34
+6,Portal 80,3,Calle 45 - American School Way
+6,Portal 80,4,Marly
+6,Portal 80,5,Calle 57
+6,Portal 80,6,Flores – Areandina
+6,Portal 80,7,Calle 76 - San Felipe
+6,Portal 80,8,Polo - FINCOMERCIO
+6,Portal 80,9,Escuela Militar
+6,Portal 80,10,Carrera 47
+6,Portal 80,11,Carrera 53
+6,Portal 80,12,AV. 68
+6,Portal 80,13,Ferias
+6,Portal 80,14,AV. Boyacá
+6,Portal 80,15,Minuto de Dios
+6,Portal 80,16,Granja - Kr 77
+6,Portal 80,17,AV. Cali
+6,Portal 80,18,Carrera 90
+6,Portal 80,19,Quirigua
+6,Portal 80,20,Portal 80
+7,Polo - FINCOMERCIO,1,Portal Suba
+7,Polo - FINCOMERCIO,2,La Campiña
+7,Polo - FINCOMERCIO,3,Suba - TV. 91
+7,Polo - FINCOMERCIO,4,21 Ángeles
+7,Polo - FINCOMERCIO,5,Gratamira
+7,Polo - FINCOMERCIO,6,Suba - AV. Boyacá
+7,Polo - FINCOMERCIO,7,Niza - Calle 127
+7,Polo - FINCOMERCIO,8,Humedal Córdoba
+7,Polo - FINCOMERCIO,9,Suba - Calle 116
+7,Polo - FINCOMERCIO,10,Puentelargo
+7,Polo - FINCOMERCIO,11,Suba - Calle 100
+7,Polo - FINCOMERCIO,12,Suba - Calle 95
+7,Polo - FINCOMERCIO,13,Rionegro
+7,Polo - FINCOMERCIO,14,San Martín
+7,Polo - FINCOMERCIO,15,Escuela Militar
+7,Polo - FINCOMERCIO,16,Polo - FINCOMERCIO
+7,Portal Suba,1,Polo - FINCOMERCIO
+7,Portal Suba,2,Escuela Militar
+7,Portal Suba,3,San Martín
+7,Portal Suba,4,Rionegro
+7,Portal Suba,5,Suba - Calle 95
+7,Portal Suba,6,Suba - Calle 100
+7,Portal Suba,7,Puentelargo
+7,Portal Suba,8,Suba - Calle 116
+7,Portal Suba,9,Humedal Córdoba
+7,Portal Suba,10,Niza - Calle 127
+7,Portal Suba,11,Suba - AV. Boyacá
+7,Portal Suba,12,Gratamira
+7,Portal Suba,13,21 Ángeles
+7,Portal Suba,14,Suba - TV. 91
+7,Portal Suba,15,La Campiña
+7,Portal Suba,16,Portal Suba
+8,Guatoque - Veraguas,1,Terminal
+8,Guatoque - Veraguas,2,Calle 187
+8,Guatoque - Veraguas,3,Portal Norte – Unicervantes
+8,Guatoque - Veraguas,4,Toberin - Foundever
+8,Guatoque - Veraguas,5,Calle 161
+8,Guatoque - Veraguas,6,Mazurén
+8,Guatoque - Veraguas,7,Calle 142
+8,Guatoque - Veraguas,8,Alcalá – Colegio S. Tomás Dominicos
+8,Guatoque - Veraguas,9,Prado
+8,Guatoque - Veraguas,10,Calle 127
+8,Guatoque - Veraguas,11,Pepe Sierra
+8,Guatoque - Veraguas,12,Calle 106 - Maletas Explora
+8,Guatoque - Veraguas,13,Calle 100 - Marketmedios
+8,Guatoque - Veraguas,14,Virrey
+8,Guatoque - Veraguas,15,Calle 85
+8,Guatoque - Veraguas,16,Héroes
+8,Guatoque - Veraguas,17,Calle 76 - San Felipe
+8,Guatoque - Veraguas,18,Flores – Areandina
+8,Guatoque - Veraguas,19,Calle 57
+8,Guatoque - Veraguas,20,Marly
+8,Guatoque - Veraguas,21,Calle 45 - American School Way
+8,Guatoque - Veraguas,22,Calle 22
+8,Guatoque - Veraguas,23,AV. Jiménez - Caracas
+8,Guatoque - Veraguas,24,Tygua - San José
+8,Guatoque - Veraguas,25,Guatoque - Veraguas
+8,Terminal,1,Guatoque - Veraguas
+8,Terminal,2,Tygua - San José
+8,Terminal,3,AV. Jiménez - Caracas
+8,Terminal,4,Calle 22
+8,Terminal,5,Calle 45 - American School Way
+8,Terminal,6,Marly
+8,Terminal,7,Calle 57
+8,Terminal,8,Flores – Areandina
+8,Terminal,9,Calle 76 - San Felipe
+8,Terminal,10,Héroes
+8,Terminal,11,Calle 85
+8,Terminal,12,Virrey
+8,Terminal,13,Calle 100 - Marketmedios
+8,Terminal,14,Calle 106 - Maletas Explora
+8,Terminal,15,Pepe Sierra
+8,Terminal,16,Calle 127
+8,Terminal,17,Prado
+8,Terminal,18,Alcalá – Colegio S. Tomás Dominicos
+8,Terminal,19,Calle 142
+8,Terminal,20,Mazurén
+8,Terminal,21,Calle 161
+8,Terminal,22,Toberin - Foundever
+8,Terminal,23,Portal Norte – Unicervantes
+8,Terminal,24,Calle 187
+8,Terminal,25,Terminal
+A52,Flores - Areandina,1,Portal Sur - JFK Coop. Financiera
+A52,Flores - Areandina,2,Perdomo
+A52,Flores - Areandina,3,CC Paseo Villa del Río - Madelena
+A52,Flores - Areandina,4,Venecia
+A52,Flores - Areandina,5,Alquería
+A52,Flores - Areandina,6,General Santander
+A52,Flores - Areandina,7,NQS - Calle 30 S
+A52,Flores - Areandina,8,Santa Isabel
+A52,Flores - Areandina,9,Calle 76 - San Felipe
+A52,Flores - Areandina,10,Flores – Areandina
+A60,Calle 76 - San Felipe,1,Portal Américas
+A60,Calle 76 - San Felipe,2,Transversal 86
+A60,Calle 76 - San Felipe,3,Banderas
+A60,Calle 76 - San Felipe,4,Distrito Grafiti
+A60,Calle 76 - San Felipe,5,Carrera 43 - Comapan
+A60,Calle 76 - San Felipe,6,Ricaurte - CL 13
+A60,Calle 76 - San Felipe,7,De La Sabana
+A60,Calle 76 - San Felipe,8,Calle 45 - American School Way
+A60,Calle 76 - San Felipe,9,Marly
+A60,Calle 76 - San Felipe,10,Calle 76 - San Felipe
+B10,Portal Norte - Unicervantes,1,Portal 80
+B10,Portal Norte - Unicervantes,2,Carrera 90
+B10,Portal Norte - Unicervantes,3,AV. Cali
+B10,Portal Norte - Unicervantes,4,Granja - Kr 77
+B10,Portal Norte - Unicervantes,5,AV. Boyacá
+B10,Portal Norte - Unicervantes,6,AV. 68
+B10,Portal Norte - Unicervantes,7,Carrera 53
+B10,Portal Norte - Unicervantes,8,Carrera 47
+B10,Portal Norte - Unicervantes,9,Calle 85
+B10,Portal Norte - Unicervantes,10,Calle 100 - Marketmedios
+B10,Portal Norte - Unicervantes,11,Alcalá – Colegio S. Tomás Dominicos
+B10,Portal Norte - Unicervantes,12,Mazurén
+B10,Portal Norte - Unicervantes,13,Toberin - Foundever
+B10,Portal Norte - Unicervantes,14,Portal Norte – Unicervantes
+B11,Terminal,1,Portal Sur - JFK Coop. Financiera
+B11,Terminal,2,CC Paseo Villa del Río - Madelena
+B11,Terminal,3,Alquería
+B11,Terminal,4,NQS - Calle 30 S
+B11,Terminal,5,Santa Isabel
+B11,Terminal,6,Ricaurte - NQS
+B11,Terminal,7,Paloquemao
+B11,Terminal,8,Campín - UAN
+B11,Terminal,9,Escuela Militar
+B11,Terminal,10,Héroes
+B11,Terminal,11,Calle 85
+B11,Terminal,12,Virrey
+B11,Terminal,13,Calle 106 - Maletas Explora
+B11,Terminal,14,Pepe Sierra
+B11,Terminal,15,Toberin - Foundever
+B11,Terminal,16,Calle 187
+B11,Terminal,17,Terminal
+B12,Portal Norte - Unicervantes,1,General Santander
+B12,Portal Norte - Unicervantes,2,Comuneros
+B12,Portal Norte - Unicervantes,3,Ricaurte - NQS
+B12,Portal Norte - Unicervantes,4,AV. ElDorado
+B12,Portal Norte - Unicervantes,5,Universidad Nacional
+B12,Portal Norte - Unicervantes,6,7 de Agosto
+B12,Portal Norte - Unicervantes,7,Calle 75 - Zona M
+B12,Portal Norte - Unicervantes,8,La Castellana
+B12,Portal Norte - Unicervantes,9,Calle 100 - Marketmedios
+B12,Portal Norte - Unicervantes,10,Calle 127
+B12,Portal Norte - Unicervantes,11,Prado
+B12,Portal Norte - Unicervantes,12,Calle 142
+B12,Portal Norte - Unicervantes,13,Toberin - Foundever
+B12,Portal Norte - Unicervantes,14,Portal Norte – Unicervantes
+B13,Portal Norte - Unicervantes,1,Portal Tunal
+B13,Portal Norte - Unicervantes,2,Biblioteca
+B13,Portal Norte - Unicervantes,3,Calle 40 Sur
+B13,Portal Norte - Unicervantes,4,Quiroga
+B13,Portal Norte - Unicervantes,5,Restrepo
+B13,Portal Norte - Unicervantes,6,Hortúa
+B13,Portal Norte - Unicervantes,7,Calle 22
+B13,Portal Norte - Unicervantes,8,Flores – Areandina
+B13,Portal Norte - Unicervantes,9,Calle 76 - San Felipe
+B13,Portal Norte - Unicervantes,10,Calle 85
+B13,Portal Norte - Unicervantes,11,Calle 106 - Maletas Explora
+B13,Portal Norte - Unicervantes,12,Calle 127
+B13,Portal Norte - Unicervantes,13,Calle 142
+B13,Portal Norte - Unicervantes,14,Mazurén
+B13,Portal Norte - Unicervantes,15,Calle 161
+B13,Portal Norte - Unicervantes,16,Portal Norte – Unicervantes
+B16,Terminal,1,Portal El Dorado – C.C. Nuestro Bogotá
+B16,Terminal,2,Modelia
+B16,Terminal,3,Avenida Rojas - UNISALESIANA
+B16,Terminal,4,El Tiempo – Cámara de Comercio de Bogotá
+B16,Terminal,5,Salitre - El Greco
+B16,Terminal,6,CAN
+B16,Terminal,7,Quinta Paredes
+B16,Terminal,8,Corferias
+B16,Terminal,9,AV. ElDorado
+B16,Terminal,10,AV. Chile
+B16,Terminal,11,Pepe Sierra
+B16,Terminal,12,Alcalá – Colegio S. Tomás Dominicos
+B16,Terminal,13,Mazurén
+B16,Terminal,14,Toberin - Foundever
+B16,Terminal,15,Calle 187
+B16,Terminal,16,Terminal
+B18,Terminal,1,Portal 20 de Julio
+B18,Terminal,2,Country Sur
+B18,Terminal,3,AV. 1 Mayo
+B18,Terminal,4,San Bernardo
+B18,Terminal,5,Bicentenario
+B18,Terminal,6,AV. Jiménez - CL 13
+B18,Terminal,7,Calle 34
+B18,Terminal,8,Calle 45 - American School Way
+B18,Terminal,9,Calle 76 - San Felipe
+B18,Terminal,10,Virrey
+B18,Terminal,11,Pepe Sierra
+B18,Terminal,12,Calle 127
+B18,Terminal,13,Alcalá – Colegio S. Tomás Dominicos
+B18,Terminal,14,Calle 187
+B18,Terminal,15,Terminal
+B23,Alcalá – Colegio S. Tomás Dominicos,1,Portal El Dorado – C.C. Nuestro Bogotá
+B23,Alcalá – Colegio S. Tomás Dominicos,2,Avenida Rojas - UNISALESIANA
+B23,Alcalá – Colegio S. Tomás Dominicos,3,El Tiempo – Cámara de Comercio de Bogotá
+B23,Alcalá – Colegio S. Tomás Dominicos,4,Salitre - El Greco
+B23,Alcalá – Colegio S. Tomás Dominicos,5,CAN
+B23,Alcalá – Colegio S. Tomás Dominicos,6,Gobernación
+B23,Alcalá – Colegio S. Tomás Dominicos,7,Ciudad Universitaria - Lotería de Bogotá
+B23,Alcalá – Colegio S. Tomás Dominicos,8,Concejo de Bogotá
+B23,Alcalá – Colegio S. Tomás Dominicos,9,Calle 34
+B23,Alcalá – Colegio S. Tomás Dominicos,10,Calle 45 - American School Way
+B23,Alcalá – Colegio S. Tomás Dominicos,11,Marly
+B23,Alcalá – Colegio S. Tomás Dominicos,12,Calle 57
+B23,Alcalá – Colegio S. Tomás Dominicos,13,Calle 85
+B23,Alcalá – Colegio S. Tomás Dominicos,14,Calle 127
+B23,Alcalá – Colegio S. Tomás Dominicos,15,Prado
+B23,Alcalá – Colegio S. Tomás Dominicos,16,Alcalá – Colegio S. Tomás Dominicos
+B26,Alcalá – Colegio S. Tomás Dominicos,1,Portal Américas
+B26,Alcalá – Colegio S. Tomás Dominicos,2,Biblioteca Tintal
+B26,Alcalá – Colegio S. Tomás Dominicos,3,Transversal 86
+B26,Alcalá – Colegio S. Tomás Dominicos,4,Banderas
+B26,Alcalá – Colegio S. Tomás Dominicos,5,Mandalay
+B26,Alcalá – Colegio S. Tomás Dominicos,6,AV. Américas - AV. Boyacá
+B26,Alcalá – Colegio S. Tomás Dominicos,7,Héroes
+B26,Alcalá – Colegio S. Tomás Dominicos,8,Calle 85
+B26,Alcalá – Colegio S. Tomás Dominicos,9,Virrey
+B26,Alcalá – Colegio S. Tomás Dominicos,10,Calle 100 - Marketmedios
+B26,Alcalá – Colegio S. Tomás Dominicos,11,Calle 127
+B26,Alcalá – Colegio S. Tomás Dominicos,12,Alcalá – Colegio S. Tomás Dominicos
+B27,Portal Norte - Unicervantes,1,Portal Tunal
+B27,Portal Norte - Unicervantes,2,Calle 40 Sur
+B27,Portal Norte - Unicervantes,3,AV. Jiménez - Caracas
+B27,Portal Norte - Unicervantes,4,Calle 34
+B27,Portal Norte - Unicervantes,5,Héroes
+B27,Portal Norte - Unicervantes,6,Calle 85
+B27,Portal Norte - Unicervantes,7,Virrey
+B27,Portal Norte - Unicervantes,8,Calle 100 - Marketmedios
+B27,Portal Norte - Unicervantes,9,Toberin - Foundever
+B27,Portal Norte - Unicervantes,10,Portal Norte – Unicervantes
+B28,Portal Norte - Unicervantes,1,Portal Américas
+B28,Portal Norte - Unicervantes,2,Biblioteca Tintal
+B28,Portal Norte - Unicervantes,3,Banderas
+B28,Portal Norte - Unicervantes,4,Marsella
+B28,Portal Norte - Unicervantes,5,Zona Industrial
+B28,Portal Norte - Unicervantes,6,CDS - Carrera 32
+B28,Portal Norte - Unicervantes,7,La Castellana
+B28,Portal Norte - Unicervantes,8,Calle 106 - Maletas Explora
+B28,Portal Norte - Unicervantes,9,Pepe Sierra
+B28,Portal Norte - Unicervantes,10,Prado
+B28,Portal Norte - Unicervantes,11,Calle 161
+B28,Portal Norte - Unicervantes,12,Portal Norte – Unicervantes
+B46,Portal Norte - Unicervantes,1,San Mateo - CC Unisur
+B46,Portal Norte - Unicervantes,2,Terreros - Hospital Cardio Vascular
+B46,Portal Norte - Unicervantes,3,León XIII
+B46,Portal Norte - Unicervantes,4,La Despensa
+B46,Portal Norte - Unicervantes,5,Bosa
+B46,Portal Norte - Unicervantes,6,Calle 100 - Marketmedios
+B46,Portal Norte - Unicervantes,7,Alcalá – Colegio S. Tomás Dominicos
+B46,Portal Norte - Unicervantes,8,Toberin - Foundever
+B46,Portal Norte - Unicervantes,9,Portal Norte – Unicervantes
+B50,Calle 161,1,Portal Suba
+B50,Calle 161,2,La Campiña
+B50,Calle 161,3,Suba - TV. 91
+B50,Calle 161,4,21 Ángeles
+B50,Calle 161,5,Suba - Calle 116
+B50,Calle 161,6,Puentelargo
+B50,Calle 161,7,Rionegro
+B50,Calle 161,8,Escuela Militar
+B50,Calle 161,9,Héroes
+B50,Calle 161,10,Calle 85
+B50,Calle 161,11,Virrey
+B50,Calle 161,12,Calle 142
+B50,Calle 161,13,Calle 161
+B55,Toberin - Foundever,1,Portal 80
+B55,Toberin - Foundever,2,Quirigua
+B55,Toberin - Foundever,3,AV. Cali
+B55,Toberin - Foundever,4,Granja - Kr 77
+B55,Toberin - Foundever,5,Minuto de Dios
+B55,Toberin - Foundever,6,Ferias
+B55,Toberin - Foundever,7,Polo - FINCOMERCIO
+B55,Toberin - Foundever,8,Héroes
+B55,Toberin - Foundever,9,Virrey
+B55,Toberin - Foundever,10,Calle 106 - Maletas Explora
+B55,Toberin - Foundever,11,Pepe Sierra
+B55,Toberin - Foundever,12,Prado
+B55,Toberin - Foundever,13,Calle 142
+B55,Toberin - Foundever,14,Calle 161
+B55,Toberin - Foundever,15,Toberin - Foundever
+B72,Toberin - Foundever,1,Portal Usme
+B72,Toberin - Foundever,2,Molinos
+B72,Toberin - Foundever,3,Socorro
+B72,Toberin - Foundever,4,Olaya
+B72,Toberin - Foundever,5,Fucha
+B72,Toberin - Foundever,6,Nariño
+B72,Toberin - Foundever,7,Tygua - San José
+B72,Toberin - Foundever,8,Paloquemao
+B72,Toberin - Foundever,9,Movistar Arena
+B72,Toberin - Foundever,10,AV. Chile
+B72,Toberin - Foundever,11,La Castellana
+B72,Toberin - Foundever,12,Pepe Sierra
+B72,Toberin - Foundever,13,Alcalá – Colegio S. Tomás Dominicos
+B72,Toberin - Foundever,14,Mazurén
+B72,Toberin - Foundever,15,Toberin - Foundever
+B74,Portal Norte - Unicervantes,1,Universidades – CityU
+B74,Portal Norte - Unicervantes,2,Calle 45 - American School Way
+B74,Portal Norte - Unicervantes,3,Calle 57
+B74,Portal Norte - Unicervantes,4,Héroes
+B74,Portal Norte - Unicervantes,5,Virrey
+B74,Portal Norte - Unicervantes,6,Prado
+B74,Portal Norte - Unicervantes,7,Calle 142
+B74,Portal Norte - Unicervantes,8,Calle 146
+B74,Portal Norte - Unicervantes,9,Mazurén
+B74,Portal Norte - Unicervantes,10,Toberin - Foundever
+B74,Portal Norte - Unicervantes,11,Portal Norte – Unicervantes
+B75,Portal Norte - Unicervantes,1,Portal Usme
+B75,Portal Norte - Unicervantes,2,Danubio
+B75,Portal Norte - Unicervantes,3,Molinos
+B75,Portal Norte - Unicervantes,4,Consuelo
+B75,Portal Norte - Unicervantes,5,Socorro
+B75,Portal Norte - Unicervantes,6,Santa Lucía
+B75,Portal Norte - Unicervantes,7,Fucha
+B75,Portal Norte - Unicervantes,8,Nariño
+B75,Portal Norte - Unicervantes,9,Hortúa
+B75,Portal Norte - Unicervantes,10,AV. Jiménez - Caracas
+B75,Portal Norte - Unicervantes,11,Marly
+B75,Portal Norte - Unicervantes,12,Calle 57
+B75,Portal Norte - Unicervantes,13,Calle 76 - San Felipe
+B75,Portal Norte - Unicervantes,14,Héroes
+B75,Portal Norte - Unicervantes,15,Calle 100 - Marketmedios
+B75,Portal Norte - Unicervantes,16,Prado
+B75,Portal Norte - Unicervantes,17,Calle 142
+B75,Portal Norte - Unicervantes,18,Toberin - Foundever
+B75,Portal Norte - Unicervantes,19,Portal Norte – Unicervantes
+C15,Portal Suba,1,Portal Tunal
+C15,Portal Suba,2,Parque
+C15,Portal Suba,3,Calle 40 Sur
+C15,Portal Suba,4,Olaya
+C15,Portal Suba,5,Nariño
+C15,Portal Suba,6,AV. Jiménez - Caracas
+C15,Portal Suba,7,Calle 22
+C15,Portal Suba,8,Calle 45 - American School Way
+C15,Portal Suba,9,Marly
+C15,Portal Suba,10,Calle 57
+C15,Portal Suba,11,Calle 76 - San Felipe
+C15,Portal Suba,12,Rionegro
+C15,Portal Suba,13,Suba - Calle 116
+C15,Portal Suba,14,Humedal Córdoba
+C15,Portal Suba,15,Niza - Calle 127
+C15,Portal Suba,16,Gratamira
+C15,Portal Suba,17,Suba - TV. 91
+C15,Portal Suba,18,La Campiña
+C15,Portal Suba,19,Portal Suba
+C17,Portal Suba,1,Portal Usme
+C17,Portal Suba,2,Danubio
+C17,Portal Suba,3,Consuelo
+C17,Portal Suba,4,Socorro
+C17,Portal Suba,5,Santa Lucía
+C17,Portal Suba,6,Quiroga
+C17,Portal Suba,7,Restrepo
+C17,Portal Suba,8,Hortúa
+C17,Portal Suba,9,Guatoque - Veraguas
+C17,Portal Suba,10,Paloquemao
+C17,Portal Suba,11,AV. ElDorado
+C17,Portal Suba,12,Universidad Nacional
+C17,Portal Suba,13,7 de Agosto
+C17,Portal Suba,14,San Martín
+C17,Portal Suba,15,Suba - Calle 95
+C17,Portal Suba,16,Suba - Calle 100
+C17,Portal Suba,17,Puentelargo
+C17,Portal Suba,18,Suba - Calle 116
+C17,Portal Suba,19,Niza - Calle 127
+C17,Portal Suba,20,Suba - TV. 91
+C17,Portal Suba,21,La Campiña
+C17,Portal Suba,22,Portal Suba
+C19,Portal Suba,1,Banderas
+C19,Portal Suba,2,Mandalay
+C19,Portal Suba,3,Marsella
+C19,Portal Suba,4,Distrito Grafiti
+C19,Portal Suba,5,Zona Industrial
+C19,Portal Suba,6,Ricaurte - CL 13
+C19,Portal Suba,7,De La Sabana
+C19,Portal Suba,8,Calle 34
+C19,Portal Suba,9,Flores – Areandina
+C19,Portal Suba,10,Suba - Calle 95
+C19,Portal Suba,11,Suba - Calle 100
+C19,Portal Suba,12,Puentelargo
+C19,Portal Suba,13,Suba - AV. Boyacá
+C19,Portal Suba,14,21 Ángeles
+C19,Portal Suba,15,Suba - TV. 91
+C19,Portal Suba,16,Portal Suba
+C25,Portal Suba,1,Portal 20 de Julio
+C25,Portal Suba,2,Country Sur
+C25,Portal Suba,3,AV. 1 Mayo
+C25,Portal Suba,4,San Bernardo
+C25,Portal Suba,5,Bicentenario
+C25,Portal Suba,6,Tygua - San José
+C25,Portal Suba,7,Guatoque - Veraguas
+C25,Portal Suba,8,Ricaurte - NQS
+C25,Portal Suba,9,Campín - UAN
+C25,Portal Suba,10,Movistar Arena
+C25,Portal Suba,11,AV. Chile
+C25,Portal Suba,12,Calle 75 - Zona M
+C25,Portal Suba,13,San Martín
+C25,Portal Suba,14,Suba - Calle 95
+C25,Portal Suba,15,Niza - Calle 127
+C25,Portal Suba,16,Suba - AV. Boyacá
+C25,Portal Suba,17,21 Ángeles
+C25,Portal Suba,18,Suba - TV. 91
+C25,Portal Suba,19,Portal Suba
+C30,Portal Suba,1,Portal Sur - JFK Coop. Financiera
+C30,Portal Suba,2,Venecia
+C30,Portal Suba,3,General Santander
+C30,Portal Suba,4,NQS - Calle 38A S
+C30,Portal Suba,5,Santa Isabel
+C30,Portal Suba,6,CAD
+C30,Portal Suba,7,Universidad Nacional
+C30,Portal Suba,8,Movistar Arena
+C30,Portal Suba,9,Rionegro
+C30,Portal Suba,10,Puentelargo
+C30,Portal Suba,11,Suba - Calle 116
+C30,Portal Suba,12,Suba - AV. Boyacá
+C30,Portal Suba,13,Suba - TV. 91
+C30,Portal Suba,14,Portal Suba
+C50,Portal Suba,1,Calle 161
+C50,Portal Suba,2,Calle 142
+C50,Portal Suba,3,Virrey
+C50,Portal Suba,4,Calle 85
+C50,Portal Suba,5,Héroes
+C50,Portal Suba,6,Escuela Militar
+C50,Portal Suba,7,Rionegro
+C50,Portal Suba,8,Puentelargo
+C50,Portal Suba,9,Suba - Calle 116
+C50,Portal Suba,10,21 Ángeles
+C50,Portal Suba,11,Suba - TV. 91
+C50,Portal Suba,12,La Campiña
+C50,Portal Suba,13,Portal Suba
+C73,Portal Suba,1,Universidades – CityU
+C73,Portal Suba,2,Centro Memoria
+C73,Portal Suba,3,Ciudad Universitaria - Lotería de Bogotá
+C73,Portal Suba,4,San Martín
+C73,Portal Suba,5,Suba - Calle 100
+C73,Portal Suba,6,Puentelargo
+C73,Portal Suba,7,Niza - Calle 127
+C73,Portal Suba,8,Suba - TV. 91
+C73,Portal Suba,9,Portal Suba
+D10,Portal 80,1,Portal Norte – Unicervantes
+D10,Portal 80,2,Toberin - Foundever
+D10,Portal 80,3,Mazurén
+D10,Portal 80,4,Alcalá – Colegio S. Tomás Dominicos
+D10,Portal 80,5,Calle 100 - Marketmedios
+D10,Portal 80,6,Calle 85
+D10,Portal 80,7,Carrera 47
+D10,Portal 80,8,Carrera 53
+D10,Portal 80,9,AV. 68
+D10,Portal 80,10,AV. Boyacá
+D10,Portal 80,11,Granja - Kr 77
+D10,Portal 80,12,AV. Cali
+D10,Portal 80,13,Carrera 90
+D10,Portal 80,14,Portal 80
+D20,Portal 80,1,Portal Usme
+D20,Portal 80,2,Molinos
+D20,Portal 80,3,Calle 40 Sur
+D20,Portal 80,4,Quiroga
+D20,Portal 80,5,Olaya
+D20,Portal 80,6,Restrepo
+D20,Portal 80,7,Calle 22
+D20,Portal 80,8,Calle 34
+D20,Portal 80,9,Calle 45 - American School Way
+D20,Portal 80,10,Flores – Areandina
+D20,Portal 80,11,Polo - FINCOMERCIO
+D20,Portal 80,12,AV. 68
+D20,Portal 80,13,Ferias
+D20,Portal 80,14,AV. Boyacá
+D20,Portal 80,15,Granja - Kr 77
+D20,Portal 80,16,Quirigua
+D20,Portal 80,17,Portal 80
+D21,Portal 80,1,Portal Tunal
+D21,Portal 80,2,Santa Lucía
+D21,Portal 80,3,Calle 40 Sur
+D21,Portal 80,4,Fucha
+D21,Portal 80,5,Guatoque - Veraguas
+D21,Portal 80,6,Ricaurte - NQS
+D21,Portal 80,7,Campín - UAN
+D21,Portal 80,8,Movistar Arena
+D21,Portal 80,9,7 de Agosto
+D21,Portal 80,10,AV. 68
+D21,Portal 80,11,Minuto de Dios
+D21,Portal 80,12,Granja - Kr 77
+D21,Portal 80,13,AV. Cali
+D21,Portal 80,14,Carrera 90
+D21,Portal 80,15,Portal 80
+D22,Portal 80,1,Portal Sur - JFK Coop. Financiera
+D22,Portal 80,2,Sevillana
+D22,Portal 80,3,General Santander
+D22,Portal 80,4,Santa Isabel
+D22,Portal 80,5,Paloquemao
+D22,Portal 80,6,AV. ElDorado
+D22,Portal 80,7,Universidad Nacional
+D22,Portal 80,8,AV. Chile
+D22,Portal 80,9,Calle 75 - Zona M
+D22,Portal 80,10,Carrera 47
+D22,Portal 80,11,AV. 68
+D22,Portal 80,12,AV. Boyacá
+D22,Portal 80,13,Minuto de Dios
+D22,Portal 80,14,Granja - Kr 77
+D22,Portal 80,15,Portal 80
+D24,Portal 80,1,Universidades – CityU
+D24,Portal 80,2,Marly
+D24,Portal 80,3,Calle 57
+D24,Portal 80,4,Calle 76 - San Felipe
+D24,Portal 80,5,Escuela Militar
+D24,Portal 80,6,Carrera 47
+D24,Portal 80,7,Minuto de Dios
+D24,Portal 80,8,Granja - Kr 77
+D24,Portal 80,9,AV. Cali
+D24,Portal 80,10,Carrera 90
+D24,Portal 80,11,Portal 80
+D55,Portal 80,1,Toberin - Foundever
+D55,Portal 80,2,Calle 161
+D55,Portal 80,3,Calle 142
+D55,Portal 80,4,Prado
+D55,Portal 80,5,Pepe Sierra
+D55,Portal 80,6,Calle 106 - Maletas Explora
+D55,Portal 80,7,Virrey
+D55,Portal 80,8,Héroes
+D55,Portal 80,9,Polo - FINCOMERCIO
+D55,Portal 80,10,Ferias
+D55,Portal 80,11,Minuto de Dios
+D55,Portal 80,12,Granja - Kr 77
+D55,Portal 80,13,AV. Cali
+D55,Portal 80,14,Quirigua
+D55,Portal 80,15,Portal 80
+E32,Calle 75 - Zona M,1,Portal Américas
+E32,Calle 75 - Zona M,2,Transversal 86
+E32,Calle 75 - Zona M,3,Banderas
+E32,Calle 75 - Zona M,4,AV. Américas - AV. Boyacá
+E32,Calle 75 - Zona M,5,Puente Aranda
+E32,Calle 75 - Zona M,6,Zona Industrial
+E32,Calle 75 - Zona M,7,CAD
+E32,Calle 75 - Zona M,8,AV. ElDorado
+E32,Calle 75 - Zona M,9,Universidad Nacional
+E32,Calle 75 - Zona M,10,7 de Agosto
+E32,Calle 75 - Zona M,11,AV. Chile
+E32,Calle 75 - Zona M,12,Calle 75 - Zona M
+E42,7 de Agosto,1,San Mateo - CC Unisur
+E42,7 de Agosto,2,Terreros - Hospital Cardio Vascular
+E42,7 de Agosto,3,León XIII
+E42,7 de Agosto,4,La Despensa
+E42,7 de Agosto,5,Bosa
+E42,7 de Agosto,6,Comuneros
+E42,7 de Agosto,7,Paloquemao
+E42,7 de Agosto,8,Universidad Nacional
+E42,7 de Agosto,9,Campín - UAN
+E42,7 de Agosto,10,7 de Agosto
+F19,Banderas,1,Portal Suba
+F19,Banderas,2,Suba - TV. 91
+F19,Banderas,3,21 Ángeles
+F19,Banderas,4,Suba - AV. Boyacá
+F19,Banderas,5,Puentelargo
+F19,Banderas,6,Suba - Calle 100
+F19,Banderas,7,Suba - Calle 95
+F19,Banderas,8,Flores – Areandina
+F19,Banderas,9,Calle 34
+F19,Banderas,10,De La Sabana
+F19,Banderas,11,Ricaurte - CL 13
+F19,Banderas,12,Zona Industrial
+F19,Banderas,13,Distrito Grafiti
+F19,Banderas,14,Marsella
+F19,Banderas,15,Mandalay
+F19,Banderas,16,Banderas
+F23,Portal Américas,1,Las Aguas - Centro Colombo Americano
+F23,Portal Américas,2,Museo del Oro
+F23,Portal Américas,3,AV. Jiménez - CL 13
+F23,Portal Américas,4,San Facon Carrera 22
+F23,Portal Américas,5,Ricaurte - CL 13
+F23,Portal Américas,6,Puente Aranda
+F23,Portal Américas,7,AV. Américas - AV. Boyacá
+F23,Portal Américas,8,Banderas
+F23,Portal Américas,9,Biblioteca Tintal
+F23,Portal Américas,10,Portal Américas
+F26,Portal Américas,1,Alcalá – Colegio S. Tomás Dominicos
+F26,Portal Américas,2,Calle 127
+F26,Portal Américas,3,Calle 100 - Marketmedios
+F26,Portal Américas,4,Virrey
+F26,Portal Américas,5,Calle 85
+F26,Portal Américas,6,Héroes
+F26,Portal Américas,7,AV. Américas - AV. Boyacá
+F26,Portal Américas,8,Mandalay
+F26,Portal Américas,9,Banderas
+F26,Portal Américas,10,Transversal 86
+F26,Portal Américas,11,Biblioteca Tintal
+F26,Portal Américas,12,Portal Américas
+F28,Portal Américas,1,Portal Norte – Unicervantes
+F28,Portal Américas,2,Calle 161
+F28,Portal Américas,3,Prado
+F28,Portal Américas,4,Pepe Sierra
+F28,Portal Américas,5,Calle 106 - Maletas Explora
+F28,Portal Américas,6,La Castellana
+F28,Portal Américas,7,CDS - Carrera 32
+F28,Portal Américas,8,Zona Industrial
+F28,Portal Américas,9,Marsella
+F28,Portal Américas,10,Banderas
+F28,Portal Américas,11,Biblioteca Tintal
+F28,Portal Américas,12,Portal Américas
+F32,Portal Américas,1,Calle 75 - Zona M
+F32,Portal Américas,2,AV. Chile
+F32,Portal Américas,3,7 de Agosto
+F32,Portal Américas,4,Universidad Nacional
+F32,Portal Américas,5,AV. ElDorado
+F32,Portal Américas,6,CAD
+F32,Portal Américas,7,Zona Industrial
+F32,Portal Américas,8,Puente Aranda
+F32,Portal Américas,9,AV. Américas - AV. Boyacá
+F32,Portal Américas,10,Banderas
+F32,Portal Américas,11,Transversal 86
+F32,Portal Américas,12,Portal Américas
+F51,Portal Américas,1,Museo Nacional
+F51,Portal Américas,2,San Diego
+F51,Portal Américas,3,Las Nieves
+F51,Portal Américas,4,Ricaurte - CL 13
+F51,Portal Américas,5,Distrito Grafiti
+F51,Portal Américas,6,Marsella
+F51,Portal Américas,7,AV. Américas - AV. Boyacá
+F51,Portal Américas,8,Mandalay
+F51,Portal Américas,9,Banderas
+F51,Portal Américas,10,Biblioteca Tintal
+F51,Portal Américas,11,Portal Américas
+F60,Portal Américas,1,Calle 76 - San Felipe
+F60,Portal Américas,2,Marly
+F60,Portal Américas,3,Calle 45 - American School Way
+F60,Portal Américas,4,De La Sabana
+F60,Portal Américas,5,Ricaurte - CL 13
+F60,Portal Américas,6,Carrera 43 - Comapan
+F60,Portal Américas,7,Distrito Grafiti
+F60,Portal Américas,8,Banderas
+F60,Portal Américas,9,Transversal 86
+F60,Portal Américas,10,Portal Américas
+F61,Portal Américas,1,Polo - FINCOMERCIO
+F61,Portal Américas,2,Flores – Areandina
+F61,Portal Américas,3,Calle 57
+F61,Portal Américas,4,Calle 34
+F61,Portal Américas,5,Calle 22
+F61,Portal Américas,6,CDS - Carrera 32
+F61,Portal Américas,7,Marsella
+F61,Portal Américas,8,Banderas
+F61,Portal Américas,9,Biblioteca Tintal
+F61,Portal Américas,10,Portal Américas
+G11,Portal Sur - JFK Coop. Financiera,1,Terminal
+G11,Portal Sur - JFK Coop. Financiera,2,Calle 187
+G11,Portal Sur - JFK Coop. Financiera,3,Toberin - Foundever
+G11,Portal Sur - JFK Coop. Financiera,4,Pepe Sierra
+G11,Portal Sur - JFK Coop. Financiera,5,Calle 106 - Maletas Explora
+G11,Portal Sur - JFK Coop. Financiera,6,Virrey
+G11,Portal Sur - JFK Coop. Financiera,7,Calle 85
+G11,Portal Sur - JFK Coop. Financiera,8,Héroes
+G11,Portal Sur - JFK Coop. Financiera,9,Escuela Militar
+G11,Portal Sur - JFK Coop. Financiera,10,Campín - UAN
+G11,Portal Sur - JFK Coop. Financiera,11,Paloquemao
+G11,Portal Sur - JFK Coop. Financiera,12,Ricaurte - NQS
+G11,Portal Sur - JFK Coop. Financiera,13,Santa Isabel
+G11,Portal Sur - JFK Coop. Financiera,14,NQS - Calle 30 S
+G11,Portal Sur - JFK Coop. Financiera,15,Alquería
+G11,Portal Sur - JFK Coop. Financiera,16,CC Paseo Villa del Río - Madelena
+G11,Portal Sur - JFK Coop. Financiera,17,Portal Sur - JFK Coop. Financiera
+G12,Portal Sur - JFK Coop. Financiera,1,Portal Norte – Unicervantes
+G12,Portal Sur - JFK Coop. Financiera,2,Toberin - Foundever
+G12,Portal Sur - JFK Coop. Financiera,3,Calle 142
+G12,Portal Sur - JFK Coop. Financiera,4,Prado
+G12,Portal Sur - JFK Coop. Financiera,5,Calle 127
+G12,Portal Sur - JFK Coop. Financiera,6,Calle 100 - Marketmedios
+G12,Portal Sur - JFK Coop. Financiera,7,La Castellana
+G12,Portal Sur - JFK Coop. Financiera,8,Calle 75 - Zona M
+G12,Portal Sur - JFK Coop. Financiera,9,7 de Agosto
+G12,Portal Sur - JFK Coop. Financiera,10,Universidad Nacional
+G12,Portal Sur - JFK Coop. Financiera,11,AV. ElDorado
+G12,Portal Sur - JFK Coop. Financiera,12,Ricaurte - NQS
+G12,Portal Sur - JFK Coop. Financiera,13,Comuneros
+G12,Portal Sur - JFK Coop. Financiera,14,General Santander
+G22,Portal Sur - JFK Coop. Financiera,1,Portal 80
+G22,Portal Sur - JFK Coop. Financiera,2,Granja - Kr 77
+G22,Portal Sur - JFK Coop. Financiera,3,Minuto de Dios
+G22,Portal Sur - JFK Coop. Financiera,4,AV. Boyacá
+G22,Portal Sur - JFK Coop. Financiera,5,AV. 68
+G22,Portal Sur - JFK Coop. Financiera,6,Carrera 47
+G22,Portal Sur - JFK Coop. Financiera,7,Calle 75 - Zona M
+G22,Portal Sur - JFK Coop. Financiera,8,AV. Chile
+G22,Portal Sur - JFK Coop. Financiera,9,Universidad Nacional
+G22,Portal Sur - JFK Coop. Financiera,10,AV. ElDorado
+G22,Portal Sur - JFK Coop. Financiera,11,Paloquemao
+G22,Portal Sur - JFK Coop. Financiera,12,Santa Isabel
+G22,Portal Sur - JFK Coop. Financiera,13,General Santander
+G22,Portal Sur - JFK Coop. Financiera,14,Sevillana
+G22,Portal Sur - JFK Coop. Financiera,15,Portal Sur - JFK Coop. Financiera
+G30,Portal Suba,1,Portal Sur - JFK Coop. Financiera
+G30,Portal Suba,2,Venecia
+G30,Portal Suba,3,General Santander
+G30,Portal Suba,4,NQS - Calle 38A S
+G30,Portal Suba,5,Santa Isabel
+G30,Portal Suba,6,CAD
+G30,Portal Suba,7,Universidad Nacional
+G30,Portal Suba,8,Movistar Arena
+G30,Portal Suba,9,Rionegro
+G30,Portal Suba,10,Puentelargo
+G30,Portal Suba,11,Suba - Calle 116
+G30,Portal Suba,12,Suba - AV. Boyacá
+G30,Portal Suba,13,Suba - TV. 91
+G30,Portal Suba,14,Portal Suba
+G41,San Mateo - CC Unisur,1,Bicentenario
+G41,San Mateo - CC Unisur,2,Tygua - San José
+G41,San Mateo - CC Unisur,3,Guatoque - Veraguas
+G41,San Mateo - CC Unisur,4,NQS - Calle 30 S
+G41,San Mateo - CC Unisur,5,Alquería
+G41,San Mateo - CC Unisur,6,Bosa
+G41,San Mateo - CC Unisur,7,Terreros - Hospital Cardio Vascular
+G41,San Mateo - CC Unisur,8,San Mateo - CC Unisur
+G42,San Mateo - CC Unisur,1,7 de Agosto
+G42,San Mateo - CC Unisur,2,Campín - UAN
+G42,San Mateo - CC Unisur,3,Universidad Nacional
+G42,San Mateo - CC Unisur,4,Paloquemao
+G42,San Mateo - CC Unisur,5,Comuneros
+G42,San Mateo - CC Unisur,6,Bosa
+G42,San Mateo - CC Unisur,7,La Despensa
+G42,San Mateo - CC Unisur,8,León XIII
+G42,San Mateo - CC Unisur,9,Terreros - Hospital Cardio Vascular
+G42,San Mateo - CC Unisur,10,San Mateo - CC Unisur
+G43,San Mateo - CC Unisur,1,Portal El Dorado – C.C. Nuestro Bogotá
+G43,San Mateo - CC Unisur,2,Modelia
+G43,San Mateo - CC Unisur,3,Normandía
+G43,San Mateo - CC Unisur,4,El Tiempo – Cámara de Comercio de Bogotá
+G43,San Mateo - CC Unisur,5,Salitre - El Greco
+G43,San Mateo - CC Unisur,6,Gobernación
+G43,San Mateo - CC Unisur,7,Quinta Paredes
+G43,San Mateo - CC Unisur,8,Corferias
+G43,San Mateo - CC Unisur,9,CAD
+G43,San Mateo - CC Unisur,10,Ricaurte - NQS
+G43,San Mateo - CC Unisur,11,General Santander
+G43,San Mateo - CC Unisur,12,Venecia
+G43,San Mateo - CC Unisur,13,La Despensa
+G43,San Mateo - CC Unisur,14,León XIII
+G43,San Mateo - CC Unisur,15,Terreros - Hospital Cardio Vascular
+G43,San Mateo - CC Unisur,16,San Mateo - CC Unisur
+G45,San Mateo - CC Unisur,1,Portal Sur - JFK Coop. Financiera
+G45,San Mateo - CC Unisur,2,San Mateo - CC Unisur
+G45,San Mateo - CC Unisur,3,Terreros - Hospital Cardio Vascular
+G45,San Mateo - CC Unisur,4,Bosa
+G45,San Mateo - CC Unisur,5,León XIII
+G45,San Mateo - CC Unisur,6,La Despensa
+G46,San Mateo - CC Unisur,1,Portal Norte – Unicervantes
+G46,San Mateo - CC Unisur,2,Toberin - Foundever
+G46,San Mateo - CC Unisur,3,Alcalá – Colegio S. Tomás Dominicos
+G46,San Mateo - CC Unisur,4,Calle 100 - Marketmedios
+G46,San Mateo - CC Unisur,5,Bosa
+G46,San Mateo - CC Unisur,6,La Despensa
+G46,San Mateo - CC Unisur,7,León XIII
+G46,San Mateo - CC Unisur,8,Terreros - Hospital Cardio Vascular
+G46,San Mateo - CC Unisur,9,San Mateo - CC Unisur
+G47,Portal Sur - JFK Coop. Financiera,1,Museo Nacional
+G47,Portal Sur - JFK Coop. Financiera,2,San Diego
+G47,Portal Sur - JFK Coop. Financiera,3,Las Nieves
+G47,Portal Sur - JFK Coop. Financiera,4,San Victorino
+G47,Portal Sur - JFK Coop. Financiera,5,Tygua - San José
+G47,Portal Sur - JFK Coop. Financiera,6,Guatoque - Veraguas
+G47,Portal Sur - JFK Coop. Financiera,7,Comuneros
+G47,Portal Sur - JFK Coop. Financiera,8,NQS - Calle 38A S
+G47,Portal Sur - JFK Coop. Financiera,9,Sevillana
+G47,Portal Sur - JFK Coop. Financiera,10,CC Paseo Villa del Río - Madelena
+G47,Portal Sur - JFK Coop. Financiera,11,Perdomo
+G47,Portal Sur - JFK Coop. Financiera,12,Portal Sur - JFK Coop. Financiera
+G52,Portal Sur - JFK Coop. Financiera,1,Flores – Areandina
+G52,Portal Sur - JFK Coop. Financiera,2,Calle 76 - San Felipe
+G52,Portal Sur - JFK Coop. Financiera,3,Santa Isabel
+G52,Portal Sur - JFK Coop. Financiera,4,NQS - Calle 30 S
+G52,Portal Sur - JFK Coop. Financiera,5,General Santander
+G52,Portal Sur - JFK Coop. Financiera,6,Alquería
+G52,Portal Sur - JFK Coop. Financiera,7,Venecia
+G52,Portal Sur - JFK Coop. Financiera,8,CC Paseo Villa del Río - Madelena
+G52,Portal Sur - JFK Coop. Financiera,9,Perdomo
+G52,Portal Sur - JFK Coop. Financiera,10,Portal Sur - JFK Coop. Financiera
+H13,Portal Tunal,1,Portal Norte – Unicervantes
+H13,Portal Tunal,2,Calle 161
+H13,Portal Tunal,3,Mazurén
+H13,Portal Tunal,4,Calle 142
+H13,Portal Tunal,5,Calle 127
+H13,Portal Tunal,6,Calle 106 - Maletas Explora
+H13,Portal Tunal,7,Calle 85
+H13,Portal Tunal,8,Calle 76 - San Felipe
+H13,Portal Tunal,9,Flores – Areandina
+H13,Portal Tunal,10,Calle 22
+H13,Portal Tunal,11,Hortúa
+H13,Portal Tunal,12,Restrepo
+H13,Portal Tunal,13,Quiroga
+H13,Portal Tunal,14,Calle 40 Sur
+H13,Portal Tunal,15,Biblioteca
+H13,Portal Tunal,16,Portal Tunal
+H15,Portal Tunal,1,Portal Suba
+H15,Portal Tunal,2,La Campiña
+H15,Portal Tunal,3,Suba - TV. 91
+H15,Portal Tunal,4,Gratamira
+H15,Portal Tunal,5,Niza - Calle 127
+H15,Portal Tunal,6,Humedal Córdoba
+H15,Portal Tunal,7,Suba - Calle 116
+H15,Portal Tunal,8,Rionegro
+H15,Portal Tunal,9,Calle 76 - San Felipe
+H15,Portal Tunal,10,Calle 57
+H15,Portal Tunal,11,Marly
+H15,Portal Tunal,12,Calle 45 - American School Way
+H15,Portal Tunal,13,Calle 22
+H15,Portal Tunal,14,AV. Jiménez - Caracas
+H15,Portal Tunal,15,Nariño
+H15,Portal Tunal,16,Olaya
+H15,Portal Tunal,17,Calle 40 Sur
+H15,Portal Tunal,18,Parque
+H15,Portal Tunal,19,Portal Tunal
+H17,Portal Usme,1,Portal Suba
+H17,Portal Usme,2,La Campiña
+H17,Portal Usme,3,Suba - TV. 91
+H17,Portal Usme,4,Niza - Calle 127
+H17,Portal Usme,5,Suba - Calle 116
+H17,Portal Usme,6,Puentelargo
+H17,Portal Usme,7,Suba - Calle 100
+H17,Portal Usme,8,Suba - Calle 95
+H17,Portal Usme,9,San Martín
+H17,Portal Usme,10,7 de Agosto
+H17,Portal Usme,11,Universidad Nacional
+H17,Portal Usme,12,AV. ElDorado
+H17,Portal Usme,13,Paloquemao
+H17,Portal Usme,14,Guatoque - Veraguas
+H17,Portal Usme,15,Hortúa
+H17,Portal Usme,16,Restrepo
+H17,Portal Usme,17,Quiroga
+H17,Portal Usme,18,Santa Lucía
+H17,Portal Usme,19,Socorro
+H17,Portal Usme,20,Consuelo
+H17,Portal Usme,21,Danubio
+H17,Portal Usme,22,Portal Usme
+H20,Portal Usme,1,Portal 80
+H20,Portal Usme,2,Quirigua
+H20,Portal Usme,3,Granja - Kr 77
+H20,Portal Usme,4,AV. Boyacá
+H20,Portal Usme,5,Ferias
+H20,Portal Usme,6,AV. 68
+H20,Portal Usme,7,Polo - FINCOMERCIO
+H20,Portal Usme,8,Flores – Areandina
+H20,Portal Usme,9,Calle 45 - American School Way
+H20,Portal Usme,10,Calle 34
+H20,Portal Usme,11,Calle 22
+H20,Portal Usme,12,Restrepo
+H20,Portal Usme,13,Olaya
+H20,Portal Usme,14,Quiroga
+H20,Portal Usme,15,Calle 40 Sur
+H20,Portal Usme,16,Molinos
+H20,Portal Usme,17,Portal Usme
+H21,Portal Tunal,1,Portal 80
+H21,Portal Tunal,2,Carrera 90
+H21,Portal Tunal,3,AV. Cali
+H21,Portal Tunal,4,Granja - Kr 77
+H21,Portal Tunal,5,Minuto de Dios
+H21,Portal Tunal,6,AV. 68
+H21,Portal Tunal,7,7 de Agosto
+H21,Portal Tunal,8,Movistar Arena
+H21,Portal Tunal,9,Campín - UAN
+H21,Portal Tunal,10,Ricaurte - NQS
+H21,Portal Tunal,11,Guatoque - Veraguas
+H21,Portal Tunal,12,Fucha
+H21,Portal Tunal,13,Calle 40 Sur
+H21,Portal Tunal,14,Santa Lucía
+H21,Portal Tunal,15,Portal Tunal
+H27,Portal Tunal,1,Portal Norte – Unicervantes
+H27,Portal Tunal,2,Toberin - Foundever
+H27,Portal Tunal,3,Calle 100 - Marketmedios
+H27,Portal Tunal,4,Virrey
+H27,Portal Tunal,5,Calle 85
+H27,Portal Tunal,6,Héroes
+H27,Portal Tunal,7,Calle 34
+H27,Portal Tunal,8,AV. Jiménez - Caracas
+H27,Portal Tunal,9,Calle 40 Sur
+H27,Portal Tunal,10,Portal Tunal
+H54,Portal Usme,1,Portal El Dorado – C.C. Nuestro Bogotá
+H54,Portal Usme,2,Modelia
+H54,Portal Usme,3,Avenida Rojas - UNISALESIANA
+H54,Portal Usme,4,El Tiempo – Cámara de Comercio de Bogotá
+H54,Portal Usme,5,Salitre - El Greco
+H54,Portal Usme,6,CAN
+H54,Portal Usme,7,Quinta Paredes
+H54,Portal Usme,8,Corferias
+H54,Portal Usme,9,Ciudad Universitaria - Lotería de Bogotá
+H54,Portal Usme,10,Concejo de Bogotá
+H54,Portal Usme,11,AV. Jiménez - Caracas
+H54,Portal Usme,12,Hortúa
+H54,Portal Usme,13,Restrepo
+H54,Portal Usme,14,Calle 40 Sur
+H54,Portal Usme,15,Molinos
+H54,Portal Usme,16,Danubio
+H54,Portal Usme,17,Portal Usme
+H72,Portal Usme,1,Toberin - Foundever
+H72,Portal Usme,2,Mazurén
+H72,Portal Usme,3,Alcalá – Colegio S. Tomás Dominicos
+H72,Portal Usme,4,Pepe Sierra
+H72,Portal Usme,5,La Castellana
+H72,Portal Usme,6,AV. Chile
+H72,Portal Usme,7,Movistar Arena
+H72,Portal Usme,8,Paloquemao
+H72,Portal Usme,9,Tygua - San José
+H72,Portal Usme,10,Nariño
+H72,Portal Usme,11,Fucha
+H72,Portal Usme,12,Olaya
+H72,Portal Usme,13,Socorro
+H72,Portal Usme,14,Molinos
+H72,Portal Usme,15,Portal Usme
+H75,Portal Usme,1,Portal Norte – Unicervantes
+H75,Portal Usme,2,Toberin - Foundever
+H75,Portal Usme,3,Calle 142
+H75,Portal Usme,4,Prado
+H75,Portal Usme,5,Calle 100 - Marketmedios
+H75,Portal Usme,6,Héroes
+H75,Portal Usme,7,Calle 76 - San Felipe
+H75,Portal Usme,8,Calle 57
+H75,Portal Usme,9,Marly
+H75,Portal Usme,10,AV. Jiménez - Caracas
+H75,Portal Usme,11,Hortúa
+H75,Portal Usme,12,Nariño
+H75,Portal Usme,13,Fucha
+H75,Portal Usme,14,Santa Lucía
+H75,Portal Usme,15,Socorro
+H75,Portal Usme,16,Consuelo
+H75,Portal Usme,17,Molinos
+H75,Portal Usme,18,Danubio
+H75,Portal Usme,19,Portal Usme
+H76,Portal Usme,1,Universidades – CityU
+H76,Portal Usme,2,AV. Jiménez - Caracas
+H76,Portal Usme,3,Restrepo
+H76,Portal Usme,4,Calle 40 Sur
+H76,Portal Usme,5,Santa Lucía
+H76,Portal Usme,6,Socorro
+H76,Portal Usme,7,Consuelo
+H76,Portal Usme,8,Molinos
+H76,Portal Usme,9,Danubio
+H76,Portal Usme,10,Portal Usme
+H83,Portal Usme,1,Museo Nacional
+H83,Portal Usme,2,San Diego
+H83,Portal Usme,3,San Victorino
+H83,Portal Usme,4,Bicentenario
+H83,Portal Usme,5,Policarpa
+H83,Portal Usme,6,AV. 1 Mayo
+H83,Portal Usme,7,Quiroga
+H83,Portal Usme,8,Consuelo
+H83,Portal Usme,9,Danubio
+H83,Portal Usme,10,Portal Usme
+J23,Las Aguas - Centro Colombo Americano,1,Banderas
+J23,Las Aguas - Centro Colombo Americano,2,AV. Américas - AV. Boyacá
+J23,Las Aguas - Centro Colombo Americano,3,Pradera - Plaza Central
+J23,Las Aguas - Centro Colombo Americano,4,Puente Aranda
+J23,Las Aguas - Centro Colombo Americano,5,Ricaurte - CL 13
+J23,Las Aguas - Centro Colombo Americano,6,San Facon Carrera 22
+J23,Las Aguas - Centro Colombo Americano,7,AV. Jiménez - CL 13
+J23,Las Aguas - Centro Colombo Americano,8,Museo del Oro
+J23,Las Aguas - Centro Colombo Americano,9,Las Aguas - Centro Colombo Americano
+J24,Universidades – CityU,1,Portal 80
+J24,Universidades – CityU,2,Carrera 90
+J24,Universidades – CityU,3,AV. Cali
+J24,Universidades – CityU,4,Granja - Kr 77
+J24,Universidades – CityU,5,Minuto de Dios
+J24,Universidades – CityU,6,Carrera 47
+J24,Universidades – CityU,7,Escuela Militar
+J24,Universidades – CityU,8,Calle 76 - San Felipe
+J24,Universidades – CityU,9,Calle 57
+J24,Universidades – CityU,10,Marly
+J24,Universidades – CityU,11,Universidades – CityU
+J70,Las Aguas - Centro Colombo Americano,1,Portal Norte – Unicervantes
+J70,Las Aguas - Centro Colombo Americano,2,Toberin - Foundever
+J70,Las Aguas - Centro Colombo Americano,3,Mazurén
+J70,Las Aguas - Centro Colombo Americano,4,Calle 142
+J70,Las Aguas - Centro Colombo Americano,5,Alcalá – Colegio S. Tomás Dominicos
+J70,Las Aguas - Centro Colombo Americano,6,Prado
+J70,Las Aguas - Centro Colombo Americano,7,Calle 127
+J70,Las Aguas - Centro Colombo Americano,8,CAD
+J70,Las Aguas - Centro Colombo Americano,9,AV. Jiménez - CL 13
+J70,Las Aguas - Centro Colombo Americano,10,Museo del Oro
+J70,Las Aguas - Centro Colombo Americano,11,Las Aguas - Centro Colombo Americano
+J73,Universidades – CityU,1,Portal Suba
+J73,Universidades – CityU,2,Suba - TV. 91
+J73,Universidades – CityU,3,Niza - Calle 127
+J73,Universidades – CityU,4,Puentelargo
+J73,Universidades – CityU,5,Suba - Calle 100
+J73,Universidades – CityU,6,San Martín
+J73,Universidades – CityU,7,Ciudad Universitaria - Lotería de Bogotá
+J73,Universidades – CityU,8,Centro Memoria
+J73,Universidades – CityU,9,Universidades – CityU
+J74,Universidades – CityU,1,Portal Norte – Unicervantes
+J74,Universidades – CityU,2,Toberin - Foundever
+J74,Universidades – CityU,3,Mazurén
+J74,Universidades – CityU,4,Calle 146
+J74,Universidades – CityU,5,Calle 142
+J74,Universidades – CityU,6,Prado
+J74,Universidades – CityU,7,Virrey
+J74,Universidades – CityU,8,Héroes
+J74,Universidades – CityU,9,Calle 57
+J74,Universidades – CityU,10,Calle 45 - American School Way
+J74,Universidades – CityU,11,Universidades – CityU
+J76,Universidades – CityU,1,Portal Usme
+J76,Universidades – CityU,2,Danubio
+J76,Universidades – CityU,3,Molinos
+J76,Universidades – CityU,4,Consuelo
+J76,Universidades – CityU,5,Socorro
+J76,Universidades – CityU,6,Santa Lucía
+J76,Universidades – CityU,7,Calle 40 Sur
+J76,Universidades – CityU,8,Restrepo
+J76,Universidades – CityU,9,AV. Jiménez - Caracas
+J76,Universidades – CityU,10,Universidades – CityU
+K10,Portal El Dorado – C.C. Nuestro Bogotá,1,Portal 20 de Julio
+K10,Portal El Dorado – C.C. Nuestro Bogotá,2,AV. 1 Mayo
+K10,Portal El Dorado – C.C. Nuestro Bogotá,3,Ciudad Jardín - UAN
+K10,Portal El Dorado – C.C. Nuestro Bogotá,4,San Bernardo
+K10,Portal El Dorado – C.C. Nuestro Bogotá,5,Bicentenario
+K10,Portal El Dorado – C.C. Nuestro Bogotá,6,San Victorino
+K10,Portal El Dorado – C.C. Nuestro Bogotá,7,Las Nieves
+K10,Portal El Dorado – C.C. Nuestro Bogotá,8,San Diego
+K10,Portal El Dorado – C.C. Nuestro Bogotá,9,Centro Memoria
+K10,Portal El Dorado – C.C. Nuestro Bogotá,10,Ciudad Universitaria - Lotería de Bogotá
+K10,Portal El Dorado – C.C. Nuestro Bogotá,11,Gobernación
+K10,Portal El Dorado – C.C. Nuestro Bogotá,12,CAN
+K10,Portal El Dorado – C.C. Nuestro Bogotá,13,Salitre - El Greco
+K10,Portal El Dorado – C.C. Nuestro Bogotá,14,Normandía
+K10,Portal El Dorado – C.C. Nuestro Bogotá,15,Modelia
+K10,Portal El Dorado – C.C. Nuestro Bogotá,16,Portal El Dorado – C.C. Nuestro Bogotá
+K16,Portal El Dorado – C.C. Nuestro Bogotá,1,Terminal
+K16,Portal El Dorado – C.C. Nuestro Bogotá,2,Calle 187
+K16,Portal El Dorado – C.C. Nuestro Bogotá,3,Toberin - Foundever
+K16,Portal El Dorado – C.C. Nuestro Bogotá,4,Mazurén
+K16,Portal El Dorado – C.C. Nuestro Bogotá,5,Alcalá – Colegio S. Tomás Dominicos
+K16,Portal El Dorado – C.C. Nuestro Bogotá,6,Pepe Sierra
+K16,Portal El Dorado – C.C. Nuestro Bogotá,7,AV. Chile
+K16,Portal El Dorado – C.C. Nuestro Bogotá,8,AV. ElDorado
+K16,Portal El Dorado – C.C. Nuestro Bogotá,9,Corferias
+K16,Portal El Dorado – C.C. Nuestro Bogotá,10,Quinta Paredes
+K16,Portal El Dorado – C.C. Nuestro Bogotá,11,CAN
+K16,Portal El Dorado – C.C. Nuestro Bogotá,12,Salitre - El Greco
+K16,Portal El Dorado – C.C. Nuestro Bogotá,13,El Tiempo – Cámara de Comercio de Bogotá
+K16,Portal El Dorado – C.C. Nuestro Bogotá,14,Avenida Rojas - UNISALESIANA
+K16,Portal El Dorado – C.C. Nuestro Bogotá,15,Modelia
+K16,Portal El Dorado – C.C. Nuestro Bogotá,16,Portal El Dorado – C.C. Nuestro Bogotá
+K23,Portal El Dorado – C.C. Nuestro Bogotá,1,Alcalá – Colegio S. Tomás Dominicos
+K23,Portal El Dorado – C.C. Nuestro Bogotá,2,Prado
+K23,Portal El Dorado – C.C. Nuestro Bogotá,3,Calle 127
+K23,Portal El Dorado – C.C. Nuestro Bogotá,4,Calle 85
+K23,Portal El Dorado – C.C. Nuestro Bogotá,5,Calle 57
+K23,Portal El Dorado – C.C. Nuestro Bogotá,6,Marly
+K23,Portal El Dorado – C.C. Nuestro Bogotá,7,Calle 45 - American School Way
+K23,Portal El Dorado – C.C. Nuestro Bogotá,8,Calle 34
+K23,Portal El Dorado – C.C. Nuestro Bogotá,9,Concejo de Bogotá
+K23,Portal El Dorado – C.C. Nuestro Bogotá,10,Ciudad Universitaria - Lotería de Bogotá
+K23,Portal El Dorado – C.C. Nuestro Bogotá,11,Gobernación
+K23,Portal El Dorado – C.C. Nuestro Bogotá,12,CAN
+K23,Portal El Dorado – C.C. Nuestro Bogotá,13,Salitre - El Greco
+K23,Portal El Dorado – C.C. Nuestro Bogotá,14,El Tiempo – Cámara de Comercio de Bogotá
+K23,Portal El Dorado – C.C. Nuestro Bogotá,15,Avenida Rojas - UNISALESIANA
+K23,Portal El Dorado – C.C. Nuestro Bogotá,16,Portal El Dorado – C.C. Nuestro Bogotá
+K43,Portal El Dorado – C.C. Nuestro Bogotá,1,San Mateo - CC Unisur
+K43,Portal El Dorado – C.C. Nuestro Bogotá,2,Terreros - Hospital Cardio Vascular
+K43,Portal El Dorado – C.C. Nuestro Bogotá,3,León XIII
+K43,Portal El Dorado – C.C. Nuestro Bogotá,4,La Despensa
+K43,Portal El Dorado – C.C. Nuestro Bogotá,5,Venecia
+K43,Portal El Dorado – C.C. Nuestro Bogotá,6,General Santander
+K43,Portal El Dorado – C.C. Nuestro Bogotá,7,Ricaurte - NQS
+K43,Portal El Dorado – C.C. Nuestro Bogotá,8,CAD
+K43,Portal El Dorado – C.C. Nuestro Bogotá,9,Corferias
+K43,Portal El Dorado – C.C. Nuestro Bogotá,10,Quinta Paredes
+K43,Portal El Dorado – C.C. Nuestro Bogotá,11,Gobernación
+K43,Portal El Dorado – C.C. Nuestro Bogotá,12,Salitre - El Greco
+K43,Portal El Dorado – C.C. Nuestro Bogotá,13,El Tiempo – Cámara de Comercio de Bogotá
+K43,Portal El Dorado – C.C. Nuestro Bogotá,14,Normandía
+K43,Portal El Dorado – C.C. Nuestro Bogotá,15,Modelia
+K43,Portal El Dorado – C.C. Nuestro Bogotá,16,Portal El Dorado – C.C. Nuestro Bogotá
+K54,Portal El Dorado – C.C. Nuestro Bogotá,1,Portal Usme
+K54,Portal El Dorado – C.C. Nuestro Bogotá,2,Danubio
+K54,Portal El Dorado – C.C. Nuestro Bogotá,3,Molinos
+K54,Portal El Dorado – C.C. Nuestro Bogotá,4,Calle 40 Sur
+K54,Portal El Dorado – C.C. Nuestro Bogotá,5,Restrepo
+K54,Portal El Dorado – C.C. Nuestro Bogotá,6,Hortúa
+K54,Portal El Dorado – C.C. Nuestro Bogotá,7,AV. Jiménez - Caracas
+K54,Portal El Dorado – C.C. Nuestro Bogotá,8,Calle 22
+K54,Portal El Dorado – C.C. Nuestro Bogotá,9,Concejo de Bogotá
+K54,Portal El Dorado – C.C. Nuestro Bogotá,10,Ciudad Universitaria - Lotería de Bogotá
+K54,Portal El Dorado – C.C. Nuestro Bogotá,11,Corferias
+K54,Portal El Dorado – C.C. Nuestro Bogotá,12,Quinta Paredes
+K54,Portal El Dorado – C.C. Nuestro Bogotá,13,CAN
+K54,Portal El Dorado – C.C. Nuestro Bogotá,14,Salitre - El Greco
+K54,Portal El Dorado – C.C. Nuestro Bogotá,15,El Tiempo – Cámara de Comercio de Bogotá
+K54,Portal El Dorado – C.C. Nuestro Bogotá,16,Avenida Rojas - UNISALESIANA
+K54,Portal El Dorado – C.C. Nuestro Bogotá,17,Modelia
+K54,Portal El Dorado – C.C. Nuestro Bogotá,18,Portal El Dorado – C.C. Nuestro Bogotá
+L10,Portal 20 de Julio,1,Portal El Dorado – C.C. Nuestro Bogotá
+L10,Portal 20 de Julio,2,Modelia
+L10,Portal 20 de Julio,3,Normandía
+L10,Portal 20 de Julio,4,Salitre - El Greco
+L10,Portal 20 de Julio,5,CAN
+L10,Portal 20 de Julio,6,Gobernación
+L10,Portal 20 de Julio,7,Ciudad Universitaria - Lotería de Bogotá
+L10,Portal 20 de Julio,8,Centro Memoria
+L10,Portal 20 de Julio,9,San Diego
+L10,Portal 20 de Julio,10,Las Nieves
+L10,Portal 20 de Julio,11,San Victorino
+L10,Portal 20 de Julio,12,Bicentenario
+L10,Portal 20 de Julio,13,San Bernardo
+L10,Portal 20 de Julio,14,Ciudad Jardín - UAN
+L10,Portal 20 de Julio,15,AV. 1 Mayo
+L10,Portal 20 de Julio,16,Portal 20 de Julio
+L18,Portal 20 de Julio,1,Terminal
+L18,Portal 20 de Julio,2,Calle 187
+L18,Portal 20 de Julio,3,Alcalá – Colegio S. Tomás Dominicos
+L18,Portal 20 de Julio,4,Calle 127
+L18,Portal 20 de Julio,5,Pepe Sierra
+L18,Portal 20 de Julio,6,Virrey
+L18,Portal 20 de Julio,7,Calle 76 - San Felipe
+L18,Portal 20 de Julio,8,Calle 45 - American School Way
+L18,Portal 20 de Julio,9,Calle 34
+L18,Portal 20 de Julio,10,Calle 22
+L18,Portal 20 de Julio,11,AV. Jiménez - Caracas
+L18,Portal 20 de Julio,12,Bicentenario
+L18,Portal 20 de Julio,13,San Bernardo
+L18,Portal 20 de Julio,14,AV. 1 Mayo
+L18,Portal 20 de Julio,15,Country Sur
+L18,Portal 20 de Julio,16,Portal 20 de Julio
+L25,Portal 20 de Julio,1,Portal Suba
+L25,Portal 20 de Julio,2,La Campiña
+L25,Portal 20 de Julio,3,Suba - TV. 91
+L25,Portal 20 de Julio,4,21 Ángeles
+L25,Portal 20 de Julio,5,Suba - AV. Boyacá
+L25,Portal 20 de Julio,6,Niza - Calle 127
+L25,Portal 20 de Julio,7,Suba - Calle 95
+L25,Portal 20 de Julio,8,San Martín
+L25,Portal 20 de Julio,9,Calle 75 - Zona M
+L25,Portal 20 de Julio,10,AV. Chile
+L25,Portal 20 de Julio,11,Movistar Arena
+L25,Portal 20 de Julio,12,Campín - UAN
+L25,Portal 20 de Julio,13,Ricaurte - NQS
+L25,Portal 20 de Julio,14,Guatoque - Veraguas
+L25,Portal 20 de Julio,15,Tygua - San José
+L25,Portal 20 de Julio,16,Bicentenario
+L25,Portal 20 de Julio,17,San Bernardo
+L25,Portal 20 de Julio,18,AV. 1 Mayo
+L25,Portal 20 de Julio,19,Country Sur
+L25,Portal 20 de Julio,20,Portal 20 de Julio
+L41,Bicentenario,1,San Mateo - CC Unisur
+L41,Bicentenario,2,Terreros - Hospital Cardio Vascular
+L41,Bicentenario,3,Bosa
+L41,Bicentenario,4,Alquería
+L41,Bicentenario,5,NQS - Calle 30 S
+L41,Bicentenario,6,Guatoque - Veraguas
+L41,Bicentenario,7,Tygua - San José
+L41,Bicentenario,8,Bicentenario
+M47,Museo Nacional,1,Portal Sur - JFK Coop. Financiera
+M47,Museo Nacional,2,Perdomo
+M47,Museo Nacional,3,CC Paseo Villa del Río - Madelena
+M47,Museo Nacional,4,Sevillana
+M47,Museo Nacional,5,NQS - Calle 38A S
+M47,Museo Nacional,6,Comuneros
+M47,Museo Nacional,7,Guatoque - Veraguas
+M47,Museo Nacional,8,Tygua - San José
+M47,Museo Nacional,9,San Victorino
+M47,Museo Nacional,10,Las Nieves
+M47,Museo Nacional,11,San Diego
+M47,Museo Nacional,12,Museo Nacional
+M51,Museo Nacional,1,Portal Américas
+M51,Museo Nacional,2,Biblioteca Tintal
+M51,Museo Nacional,3,Banderas
+M51,Museo Nacional,4,Mandalay
+M51,Museo Nacional,5,AV. Américas - AV. Boyacá
+M51,Museo Nacional,6,Marsella
+M51,Museo Nacional,7,Pradera - Plaza Central
+M51,Museo Nacional,8,Distrito Grafiti
+M51,Museo Nacional,9,Ricaurte - CL 13
+M51,Museo Nacional,10,Las Nieves
+M51,Museo Nacional,11,San Diego
+M51,Museo Nacional,12,Museo Nacional
+M83,Museo Nacional,1,Portal Usme
+M83,Museo Nacional,2,Danubio
+M83,Museo Nacional,3,Consuelo
+M83,Museo Nacional,4,Quiroga
+M83,Museo Nacional,5,AV. 1 Mayo
+M83,Museo Nacional,6,Policarpa
+M83,Museo Nacional,7,Bicentenario
+M83,Museo Nacional,8,San Victorino
+M83,Museo Nacional,9,San Diego
+M83,Museo Nacional,10,Museo Nacional
