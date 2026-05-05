@@ -31,5 +31,30 @@ VELOCIDAD_DETENIDO = 5        # km/h considerado como detenido
 ALERT_THRESHOLD = 10          # Cantidad de buses para activar alerta de zona
 MOSTRAR_GRAFICA = True        # Mostrar ventana con gráfica de clusters
 
+# Configuración de análisis de anomalías
+RADIO_EXCLUSION_PORTAL = 300        # Radio de exclusión alrededor de portales (metros)
+MINUTAS_INACTIVIDAD = 10           # Minutos sin movimiento para considerarse detenido
+TIEMPO_HISTORIAL_ANALISIS = 60       # Minutos de historial para análisis (1 hora)
+NUM_CAPTURAS_HISTORIAL = 60          # Número de capturas a guardar para análisis
+
+# Configuración de detección de anomalías
+UMBRAL_MANIFESTACION = 20           # Buses sin movimiento para manifestar
+UMBRAL_TRANCON = 10                 # Buses lentos para trancón
+RADIO_ANOMALIA = 500               # Radio para clustering de anomalías (metros)
+
+# Portales con coordenadas (latitud, longitud)
+PORTALES = {
+    "Portal Norte": (4.7700, -74.0300),
+    "Portal 80": (4.7100, -74.0500),
+    "Portal Suba": (4.6900, -74.0800),
+    "Portal 20": (4.4200, -74.1500),
+    "Portal Sur": (4.4000, -74.1700),
+    "Portal Tunal": (4.5700, -74.1200),
+    "Portal Usme": (4.6000, -74.1300),
+    "Portal Américas": (4.6800, -74.1100),
+    "Portal El Dorado": (4.6900, -74.1000),
+    "Portal 20 de Julio": (4.4200, -74.1500),
+}
+
 # Configuración de logging
 LOG_LEVEL = "INFO"  # DEBUG, INFO, WARNING, ERROR

@@ -11,7 +11,7 @@ from datetime import datetime
 from bus_tracker import BusTracker
 from database import BusDatabase
 from config import RUTAS_CSV, MONITOR_INTERVAL, DATABASE_PATH
-from analisis import generar_resumen, formatear_salida, obtener_configuracion, mostrar_grafica, guardar_grafica
+from analisis import generar_resumen, formatear_salida, obtener_configuracion, mostrar_grafica, guardar_grafica, detectar_anomalias, formatear_anomalias
 
 
 def cmd_prueba(tracker: BusTracker, args):
@@ -93,7 +93,7 @@ def cmd_consultar(db: BusDatabase, args):
     """Muestra las últimas ubicaciones."""
     if args.bus_id:
         trayectoria = db.obtener_trayectoria(args.bus_id, args.horas)
-        print(f"\n📍 Trayectoria de bus {args.bus_id} (últimas {args.horas}h):")
+        print(f"\n[UBICACIONES] Trayectoria de bus {args.bus_id} (últimas {args.horas}h):")
         print(f"   {len(trayectoria)} registros encontrados\n")
 
         if args.json:
@@ -106,7 +106,7 @@ def cmd_consultar(db: BusDatabase, args):
                     print(f"   ... y {len(trayectoria) - 20} más (usar --json para ver todos)")
     else:
         posiciones = db.obtener_ultimas_posiciones(args.limite)
-        print(f"\n📍 Últimas {len(posiciones)} posiciones de buses:")
+        print(f"\n[UBICACIONES] Últimas {len(posiciones)} posiciones de buses:")
         print("-" * 80)
 
         for pos in posiciones:
@@ -122,7 +122,7 @@ def cmd_consultar(db: BusDatabase, args):
 def cmd_por_ruta(db: BusDatabase, args):
     """Muestra buses por ruta específica."""
     posiciones = db.obtener_por_ruta(args.ruta, args.limite)
-    print(f"\n🚌 Buses en ruta {args.ruta}: {len(posiciones)}")
+    print(f"\n[RUTA] Buses en ruta {args.ruta}: {len(posiciones)}")
     print("-" * 70)
 
     for pos in posiciones:
@@ -138,7 +138,7 @@ def cmd_por_ruta(db: BusDatabase, args):
 def cmd_resumen(db: BusDatabase, args):
     """Muestra resumen por ruta."""
     resumen = db.resumen_por_ruta()
-    print("\n📊 Resumen por ruta:")
+    print("\n[RESUMEN] Resumen por ruta:")
     print("-" * 60)
 
     for r in resumen:
@@ -154,10 +154,26 @@ def cmd_exportar(db: BusDatabase, args):
     print(f"✓ Exportados {total} registros a {archivo}")
 
 
+def cmd_anomalias(db: BusDatabase, args):
+    """Detecta anomalías en el sistema de transporte."""
+    try:
+        analisis = detectar_anomalias(db)
+        print(formatear_anomalias(analisis))
+        
+        if args.json:
+            print("\n--- JSON ---")
+            print(json.dumps(analisis, indent=2, ensure_ascii=False))
+    
+    except Exception as e:
+        print(f"\nError detectando anomalías: {e}")
+        import traceback
+        traceback.print_exc()
+
+
 def cmd_estadisticas(db: BusDatabase, args):
     """Muestra estadísticas de la base de datos."""
     stats = db.estadisticas()
-    print("\n📈 Estadísticas de la base de datos:")
+    print("\n[ESTADISTICAS] Estadisticas de la base de datos:")
     print(f"   Total de registros: {stats['total_registros']}")
     print(f"   Buses únicos: {stats['total_buses']}")
     print(f"   Rutas monitoreadas: {stats['total_rutas']}")
@@ -242,6 +258,10 @@ Ejemplos:
 
     # Comando stats
     subparsers.add_parser("stats", help="Ver estadísticas de la base de datos")
+    
+    # Comando anomalias
+    anp = subparsers.add_parser("anomalias", help="Detectar anomalías en transporte")
+    anp.add_argument("--json", action="store_true", help="Salida en JSON")
 
     args = parser.parse_args()
 
@@ -272,6 +292,8 @@ Ejemplos:
         cmd_exportar(db, args)
     elif args.comando == "stats":
         cmd_estadisticas(db, args)
+    elif args.comando == "anomalias":
+        cmd_anomalias(db, args)
 
 
 if __name__ == "__main__":
