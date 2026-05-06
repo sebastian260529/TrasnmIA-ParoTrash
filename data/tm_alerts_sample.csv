@@ -1,0 +1,16 @@
+ubicacion;ubicacion_normalizada;tipo_evento;causa;dia_semana;franja_horaria;usuarios_afectados;estaciones_afectadas;servicios_afectados;texto_original
+Avenida Caracas con Calle 26;Avenida Caracas con Calle 6;Manifestacion o protesta;manifestacion;Lunes;manana;45000;Hortua|Narino|Fucha;C30|G30|H30|J30;Manifestacion en Avenida Caracas genera bloqueo total
+Portal Eldorado;Portal Eldorado;Manifestacion o protesta;manifestacion;Martes;tarde;32000;Portal Eldorado|Modelia;K30|L30|M80;Protesta en Portal Eldorado afecta toda la troncal
+Avenida Caracas con Carrera 12B;Avenida Caracas con Carrera 12B;Bloqueo;bloqueo;Miercoles;manana;28000;Flores|Calle 63|Calle 57;C30|H30|B80;Bloqueo total en Avenida Caracas con Carrera 12B
+Portal Norte;Portal Norte;Manifestacion o protesta;protesta;Jueves;tarde;38000;Portal Norte|Calle 161|Toberin;H30|J30|B80;Protesta en Portal Norte por condiciones laborales
+Carrera 5 con Calle 28;Carrera 5 con Calle 28;Bloqueo;bloqueo;Viernes;manana;15000;Carrera 5|Calle 28;M80|L30;Bloqueo en Carrera 5 con Calle 28 por marcha estudiantil
+Universidad Distrital sede La Macarena;Universidad Distrital sede La Macarena;Manifestacion o protesta;protesta;Miercoles;manana;22000;Universidades|CityU|Las Nieves;J30|C30;Manifestacion universitaria en Distrital Macarena
+Portal Sur;Portal Sur;Cierre o estaciones sin operar;cierre;Sabado;tarde;18000;Portal Sur|Banderas;H30|J30|M80;Portal Sur cerrado por mantenimiento emergencia
+Avenida Circunvalar con Calle 26;Avenida Circunvalar con Calle 26;Siniestro vial;accidente;Lunes;noche;8500;Avenida Circunvalar;M80|L30;Accidente multiple en Avenida Circunvalar con Calle 26
+Portal Eldorado;Portal Eldorado;Desvios operacionales;desvio;Martes;tarde;25000;Portal Eldorado|Normandia|Avenida Rojas;K30|L30|J30;Desvios masivos en Portal Eldorado por obra
+Avenida Caracas con Carrera 12B;Avenida Caracas con Carrera 12B;Manifestacion o protesta;protesta;Jueves;noche;35000;Flores|Calle 63|Calle 57|Hortua;C30|H30|J30;Nueva protesta en Avenida Caracas Carrera 12B
+Portal Eldorado;Portal Eldorado;Manifestacion o protesta;manifestacion;Viernes;manana;42000;Portal Eldorado|Modelia|Normandia;K30|L30|M80|J30;Gran manifestacion paraliza Portal Eldorado
+Universidad Distrital sede La Macarena;Universidad Distrital sede La Macarena;Bloqueo;bloqueo;Lunes;manana;18000;Universidades|CityU;J30|C30;Bloqueo estudiantil en Universidad Distrital Macarena
+Portal Norte;Portal Norte;Cierre o estaciones sin operar;cierre;Miercoles;tarde;22000;Portal Norte|Calle 161;H30|J30;B80;Portal Norte sin operar por falla electrica
+Carrera 5 con Calle 28;Carrera 5 con Calle 28;Manifestacion o protesta;marcha;Jueves;manana;20000;Carrera 5|Calle 28|Carrera 7;M80|L30|C30;Marcha masiva en Carrera 5 con Calle 28
+Portal Americas;Portal Americas;Desvios operacionales;desvio;Viernes;tarde;12000;Portal Americas|Banderas|Mandalay;J30|H30;Desvios en Portal Americas por reparaciones
