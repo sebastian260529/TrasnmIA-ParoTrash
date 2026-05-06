@@ -32,21 +32,22 @@ DATABASE_PATH = os.path.join(BASE_DIR, "data", "buses.db")
 CLUSTER_RADIUS = 100          # Radio de clustering en metros
 MIN_DISTANCE_ALERT = 50        # Distancia mínima para alertar trancón (m)
 MIN_POS_CHANGE = 10           # Cambio mínimo en metros para considerar movimiento
-VELOCIDAD_LENTA = 15          # km/h considerado como tráfico lento
+VELOCIDAD_LENTA = 20           # km/h considerado como tráfico lento (aumentado de 15)
 VELOCIDAD_DETENIDO = 5        # km/h considerado como detenido
 ALERT_THRESHOLD = 10          # Cantidad de buses para activar alerta de zona
 MOSTRAR_GRAFICA = True        # Mostrar ventana con gráfica de clusters
 
 # Configuración de análisis de anomalías
 RADIO_EXCLUSION_PORTAL = 300        # Radio de exclusión alrededor de portales (metros)
-MINUTAS_INACTIVIDAD = 10           # Minutos sin movimiento para considerarse detenido
+MINUTAS_INACTIVIDAD = 5            # Minutos sin movimiento para considerarse detenido (reducido de 10)
 TIEMPO_HISTORIAL_ANALISIS = 60       # Minutos de historial para análisis (1 hora)
 NUM_CAPTURAS_HISTORIAL = 60          # Número de capturas a guardar para análisis
 
 # Configuración de detección de anomalías
 UMBRAL_MANIFESTACION = 20           # Buses sin movimiento para manifestar
-UMBRAL_TRANCON = 10                 # Buses lentos para trancón
+UMBRAL_TRANCON = 8                  # Buses lentos para trancón (reducido de 10)
 RADIO_ANOMALIA = 500               # Radio para clustering de anomalías (metros)
+DISTANCIA_MAX_CLUSTER = 300        # Distancia máxima entre buses consecutivos para clustering lineal (metros)
 
 # Portales con coordenadas (latitud, longitud)
 PORTALES = {

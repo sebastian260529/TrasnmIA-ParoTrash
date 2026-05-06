@@ -22,8 +22,22 @@ from ubicacion_buses.location_service import (
     normalize_address, ZONAS_CONOCIDAS
 )
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TM_CSV_PATH = os.path.join(BASE_DIR, "data", "tm_alerts_sample.csv")
+
+TM_CSV_PATHS_TO_TRY = [
+    TM_CSV_PATH,
+    os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), "ChatBot", "data", "tm_alerts_sample.csv"),
+    os.path.join(os.path.dirname(__file__), "..", "..", "data", "tm_alerts_sample.csv"),
+    "C:\\Users\\sebas\\Documents\\Inteligencia Artificial\\ChatBot\\data\\tm_alerts_sample.csv",
+    "data/tm_alerts_sample.csv",
+]
+
+def _get_tm_csv_path():
+    for path in TM_CSV_PATHS_TO_TRY:
+        if os.path.exists(path):
+            return path
+    return TM_CSV_PATH
 
 PESOS = {
     "buses": 0.35,
@@ -51,7 +65,8 @@ def normalize_text(texto: str) -> str:
 
 
 def _busca_en_dataset_historico(ubicacion: str) -> List[Dict]:
-    alertas = load_alert_dataset(TM_CSV_PATH)
+    csv_path = _get_tm_csv_path()
+    alertas = load_alert_dataset(csv_path)
     if not alertas:
         return []
     normalized_query = normalize_address(ubicacion)
@@ -142,16 +157,39 @@ def _score_buses(db: BusDatabase, zona: str) -> Dict[str, Any]:
         
         score = 0
         detalle = ""
-        
+        tipo_principal = "ninguna"
+
         if anomalias_en_zona:
-            pesos_anomalias = [a.get("porcentaje_confianza", 0) for a in anomalias_en_zona]
-            score = sum(pesos_anomalias) / len(pesos_anomalias)
-            
+            scores_tipados = []
+            for a in anomalias_en_zona:
+                tipo = a.get("tipo", "desconocido")
+                confianza = a.get("porcentaje_confianza", 0)
+
+                if tipo == "MANIFESTACION":
+                    score_ajustado = confianza * 0.85
+                    scores_tipados.append(("MANIFESTACION", score_ajustado, 85))
+                    tipo_principal = "MANIFESTACION"
+                elif tipo == "TRANCON":
+                    score_ajustado = min(confianza * 0.55, 55)
+                    scores_tipados.append(("TRANCON", score_ajustado, 55))
+                    if tipo_principal != "MANIFESTACION":
+                        tipo_principal = "TRANCON"
+                elif tipo == "BUS_VARADO":
+                    score_ajustado = min(confianza * 0.25, 25)
+                    scores_tipados.append(("BUS_VARADO", score_ajustado, 25))
+                    if tipo_principal not in ["MANIFESTACION", "TRANCON"]:
+                        tipo_principal = "BUS_VARADO"
+                else:
+                    scores_tipados.append((tipo, confianza, 100))
+
+            score = sum(s[1] for s in scores_tipados) / len(scores_tipados)
+
             tipos = [a.get("tipo", "desconocido") for a in anomalias_en_zona]
             tipos_str = ", ".join(set(tipos))
-            
-            detalle = f"Se detectaron {len(anomalias_en_zona)} anomalías en {zona}: {tipos_str}. Confianza promedio: {score:.1f}%"
-            
+            topes = f"(Manifestación:85%, Trancón:55%, Varado:25%)"
+
+            detalle = f"Se detectaron {len(anomalias_en_zona)} anomalías en {zona}: {tipos_str}. Score ajustado: {score:.1f}%. {topes}"
+
             datos_usados = [{
                 "tipo": a.get("tipo"),
                 "coordenadas": a.get("coordenadas"),
@@ -160,22 +198,27 @@ def _score_buses(db: BusDatabase, zona: str) -> Dict[str, Any]:
             } for a in anomalias_en_zona[:5]]
         elif buses_cercanos > 0:
             if buses_cercanos <= 3:
-                score = 25
+                score = 10
             elif buses_cercanos <= 7:
-                score = 55
+                score = 15
             else:
-                score = 80
-            
-            detalle = f"No hay anomalías formalizadas cerca de {zona}, pero se detectaron {buses_cercanos} buses en la zona."
+                score = 20
+            tipo_principal = "buses_sin_anomalia"
+
+            detalle = f"No hay anomalías formalizadas cerca de {zona}, pero se detectaron {buses_cercanos} buses en la zona. Score bajo: {score}%"
             datos_usados = datos_buses[:10]
         else:
             score = 0
+            tipo_principal = "ninguna"
             detalle = f"No se detectaron anomalías ni buses afectados cerca de {zona}. Se revisaron {len(captura_real)} buses."
             datos_usados = []
-        
+
+        score_final = min(score, 85)
+
         return {
-            "score": min(score, 95),
+            "score": score_final,
             "tipo_dato": "real",
+            "tipo_principal": tipo_principal,
             "detalle": detalle,
             "cantidad": len(anomalias_en_zona) + buses_cercanos,
             "datos_usados": datos_usados,
@@ -242,108 +285,37 @@ def _score_whatsapp_transmilenio(zona: str) -> Dict[str, Any]:
                 "advertencia": None
             }
 
-        coincidencias = _busca_en_dataset_historico(zona)
+        total_alertas_hoy = len(alertas_hoy)
 
-        if whapi_status == "ok" and alertas_hoy:
-            tipo_dato = "mixto"
-            advertencia = None
-        elif whapi_status in ("sin_configuracion", "error"):
-            tipo_dato = "historico"
-            advertencia = whapi_alerts.get("advertencia", "Este score es historico, no confirma un evento actual.")
-        else:
-            tipo_dato = "historico"
-            advertencia = "Este score es historico, no confirma un evento actual."
-
-        if not coincidencias:
-            csv_existe = os.path.exists(TM_CSV_PATH)
-            total_coincidencias = len(alertas_hoy) if alertas_hoy else 0
-            if total_coincidencias == 0:
-                return {
-                    "score": 0,
-                    "tipo_dato": "sin_datos",
-                    "detalle": f"No se encontraron coincidencias historicas para {zona} en el dataset de TransMilenio."
-                              + (" Se reviso el CSV historico." if csv_existe else ""),
-                    "coincidencias": 0,
-                    "datos_usados": [],
-                    "alerta_oficial_hoy": False,
-                    "advertencia": "No se encontraron coincidencias historicas para esta zona." if csv_existe else "No se encontro dataset historico de TransMilenio."
-                }
+        if not alertas_hoy:
             return {
-                "score": 60,
-                "tipo_dato": tipo_dato,
-                "detalle": f"Se detectaron {total_coincidencias} mensajes de WhatsApp/TM para {zona}.",
-                "coincidencias": total_coincidencias,
-                "datos_usados": alertas_hoy[:5],
+                "score": 0,
+                "tipo_dato": "sin_datos_hoy",
+                "detalle": f"No se encontraron mensajes de WhatsApp/TM para {zona} en el dia de hoy.",
+                "coincidencias": 0,
+                "datos_usados": [],
                 "alerta_oficial_hoy": False,
-                "advertencia": advertencia
+                "advertencia": "No hay alertas del dia de hoy. Use IA/Texto para datos historicos."
             }
 
-        n = len(coincidencias)
-        tipos = {}
-        franjas = {}
-        usuarios_total = 0
-        for al in coincidencias:
-            causa = str(al.get('causa', '')).lower()
-            t = str(al.get('tipo_evento', '')).lower()
-            for kw in ['manifestacion', 'bloqueo', 'protesta', 'cierre', 'desvio', 'congestion', 'marcha', 'siniestro']:
-                if kw in causa or kw in t:
-                    tipos[kw] = tipos.get(kw, 0) + 1
-            fh = al.get('franja_horaria', '')
-            if fh:
-                franjas[fh] = franjas.get(fh, 0) + 1
-            try:
-                usuarios_total += int(al.get('usuarios_afectados', 0) or 0)
-            except (ValueError, TypeError):
-                pass
-        tipo_mas_frec = max(tipos, key=tipos.get) if tipos else "varios"
-        franja_mas_frec = max(franjas, key=franjas.get) if franjas else "varias"
-        if n == 1:
-            score = 25
-        elif n <= 3:
-            score = 45
-        elif n <= 6:
-            score = 65
-        else:
-            score = 80
-        palabras_fuertes = sum(1 for t in ['manifestacion', 'bloqueo', 'protesta', 'cierre'] if t in tipos)
-        if palabras_fuertes >= 2:
-            score = min(95, score + 10)
-        if usuarios_total > 50000:
-            score = min(95, score + 5)
-        if tipo_dato == "mixto":
-            score = min(95, score + 15)
-        detalle = (f"Se encontraron {n} coincidencias en el dataset de TransMilenio para {zona}. "
-                   f"Tipo mas frecuente: {tipo_mas_frec}. Franja mas comun: {franja_mas_frec}."
-                   + (f" Usuarios afectados total: {usuarios_total:,}." if usuarios_total > 0 else ""))
-        if tipo_dato == "mixto":
-            detalle += f" Tambien se detectaron {len(alertas_hoy)} mensajes recientes de WhatsApp/TM."
-        datos_resumen = []
-        for al in coincidencias[:5]:
-            datos_resumen.append({
-                "ubicacion": al.get("ubicacion_normalizada") or al.get("ubicacion"),
-                "tipo_evento": al.get("tipo_evento"),
-                "dia_semana": al.get("dia_semana"),
-                "franja_horaria": al.get("franja_horaria"),
-                "usuarios_afectados": al.get("usuarios_afectados")
-            })
         return {
-            "score": min(score, 95),
-            "tipo_dato": tipo_dato,
-            "detalle": detalle,
-            "coincidencias": n,
-            "datos_usados": datos_resumen,
+            "score": 60,
+            "tipo_dato": "real_hoy",
+            "detalle": f"Se detectaron {total_alertas_hoy} mensajes de WhatsApp/TM para {zona} en el dia de hoy.",
+            "coincidencias": total_alertas_hoy,
+            "datos_usados": alertas_hoy[:5],
             "alerta_oficial_hoy": False,
-            "advertencia": advertencia
+            "advertencia": None
         }
     except Exception as e:
         return {
             "score": 0,
             "tipo_dato": "error",
-            "detalle": f"Error al consultar patrones historicos: {str(e)}",
+            "detalle": f"Error al consultar WhatsApp/TM: {str(e)}",
             "coincidencias": 0,
             "datos_usados": [],
             "alerta_oficial_hoy": False,
-            "advertencia": f"No fue posible consultar esta fuente: {str(e)}"
+            "advertencia": f"Error al consultar WhatsApp: {str(e)}"
         }
 
 
@@ -426,56 +398,60 @@ def _score_firebase_reportes(zona: str) -> Dict[str, Any]:
     }
 
 
-def _score_ia_texto(zona: str, textos_reales: List[str] = None) -> Dict[str, Any]:
+def _score_ia_texto(zona: str) -> Dict[str, Any]:
     try:
         prediction_service = PredictionService()
-        textos = [f"Analisis de riesgo en {zona}"]
-        if textos_reales:
-            textos.extend(textos_reales)
-        else:
-            objetos = []
-            def _load():
-                try:
-                    from firebase.client import get_all_reportes
-                    objs = get_all_reportes()
-                    objetos.extend([o for o in objs if not str(o.get("id", "")).startswith("DEMO_") and not str(o.get("reporte_id", "")).startswith("DEMO_")])
-                except Exception:
-                    pass
-            _load()
-            if objetos:
-                for o in objetos[:20]:
-                    desc = o.get("descripcion", "")
-                    tipo = o.get("tipo", "")
-                    if desc:
-                        textos.append(desc)
-                    if tipo:
-                        textos.append(tipo)
-            coincidencias_hist = _busca_en_dataset_historico(zona)[:10]
-            for al in coincidencias_hist:
-                txt = al.get("texto_original", "")
-                if txt:
-                    textos.append(txt)
-            if len(textos) <= 1:
-                textos.append(f"Movilidad en {zona}")
+
+        coincidencias_hist = _busca_en_dataset_historico(zona)
+
+        if not coincidencias_hist:
+            return {
+                "score": 0,
+                "tipo_dato": "sin_datos",
+                "detalle": f"No se encontraron alertas historicas para {zona} en el dataset de TransMilenio.",
+                "palabras_clave": [],
+                "advertencia": "No hay datos historicos para esta zona."
+            }
+
+        textos = []
+        for al in coincidencias_hist:
+            txt = al.get("texto_original", "")
+            if txt:
+                textos.append(txt)
+
         request = PrediccionRequest(zona=zona, publicaciones=textos, reportes_app=[])
         result = prediction_service.predecir_riesgo(request)
         palabras = result.palabras_clave_detectadas
         prob = result.probabilidad
-        if prob <= 30:
-            detalle = f"El analisis de texto no detecta senales fuertes de riesgo en {zona}."
-        elif prob <= 60:
-            detalle = f"El analisis de texto detecta senales moderadas de riesgo en {zona}."
+
+        n = len(coincidencias_hist)
+        if n == 1:
+            prob = max(prob, 25)
+        elif n <= 3:
+            prob = max(prob, 45)
+        elif n <= 6:
+            prob = max(prob, 65)
         else:
-            detalle = f"El analisis de texto detecta senales fuertes de riesgo en {zona}."
-        textos_reales_usados = bool(textos_reales) or bool(objetos) if 'objetos' in dir() else bool(textos_reales)
+            prob = max(prob, 80)
+
+        if prob <= 30:
+            detalle = f"El analisis de datos historicos no detecta senales fuertes de riesgo en {zona}."
+        elif prob <= 60:
+            detalle = f"El analisis de datos historicos detecta senales moderadas de riesgo en {zona}: {n} alertas encontradas."
+        else:
+            detalle = f"El analisis de datos historicos detecta senales fuertes de riesgo en {zona}: {n} alertas encontradas."
+
         if palabras:
             detalle += f" Palabras clave: {', '.join(palabras)}."
+
         return {
-            "score": min(prob, 85),
-            "tipo_dato": "real" if textos_reales_usados else "reglas",
+            "score": min(prob, 90),
+            "tipo_dato": "historico",
             "detalle": detalle,
             "palabras_clave": palabras,
-            "advertencia": None
+            "coincidencias": n,
+            "datos_usados": coincidencias_hist[:5],
+            "advertencia": "Datos basados en dataset historico de TransMilenio."
         }
     except Exception as e:
         return {
@@ -758,8 +734,9 @@ def get_fuentes_estado() -> Dict[str, Any]:
     try:
         whapi_ok = is_whapi_configured()
         whapi_config = get_whapi_config()
-        csv_existe = os.path.exists(TM_CSV_PATH)
-        alertas = load_alert_dataset(TM_CSV_PATH)
+        csv_path = _get_tm_csv_path()
+        csv_existe = os.path.exists(csv_path)
+        alertas = load_alert_dataset(csv_path)
 
         modo_parts = []
         if whapi_ok:
