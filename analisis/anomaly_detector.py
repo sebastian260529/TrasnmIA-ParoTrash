@@ -218,19 +218,29 @@ def calcular_porcentaje_confianza(tipo: str, buses_count: int, umbral: int, **kw
     return 0.0
 
 
-def calcular_velocidad_bus(db: BusDatabase, bus_id: str, posicion_actual: int) -> tuple:
+def calcular_velocidad_bus(db: BusDatabase, bus_id: str) -> tuple:
     """
-    Calcula velocidad de un bus usando sus datos históricos.
+    Calcula velocidad de un bus usando DISTANCIA GPS real (haversine).
     Si tiene 2 datos: usa esos 2.
     Si tiene 3+ datos: usa promedio de los últimos N.
     Returns: (velocidad_kmh, datos_usados)
     """
     import sqlite3
+    import math
+
+    def haversine(lat1, lon1, lat2, lon2):
+        R = 6371000  # metros
+        phi1, phi2 = math.radians(lat1), math.radians(lat2)
+        dphi = math.radians(lat2 - lat1)
+        dlambda = math.radians(lon2 - lon1)
+        a = math.sin(dphi/2)**2 + math.cos(phi1)*math.cos(phi2)*math.sin(dlambda/2)**2
+        return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1-a))
+
     conn = sqlite3.connect(db.db_path)
     cursor = conn.cursor()
     
     cursor.execute("""
-        SELECT posicion, timestamp
+        SELECT latitud, longitud, timestamp
         FROM posiciones_buses
         WHERE bus_id = ?
         ORDER BY timestamp DESC
@@ -243,16 +253,15 @@ def calcular_velocidad_bus(db: BusDatabase, bus_id: str, posicion_actual: int) -
     if len(resultados) < 2:
         return (0, len(resultados))
     
-    # Usar todos los datos disponibles (2 o más)
     velocidades = []
     for i in range(len(resultados) - 1):
-        pos_ant = resultados[i + 1][0]
-        pos_act = resultados[i][0]
-        tiempo_diff = (datetime.strptime(resultados[i][1], "%Y-%m-%d %H:%M:%S") -
-                    datetime.strptime(resultados[i + 1][1], "%Y-%m-%d %H:%M:%S")).total_seconds()
+        lat1, lon1 = resultados[i + 1][0], resultados[i + 1][1]
+        lat2, lon2 = resultados[i][0], resultados[i][1]
+        tiempo_diff = (datetime.strptime(resultados[i][2], "%Y-%m-%d %H:%M:%S") -
+                    datetime.strptime(resultados[i + 1][2], "%Y-%m-%d %H:%M:%S")).total_seconds()
         if tiempo_diff > 0:
-            cambio_pos = abs(pos_act - pos_ant)
-            velocidad = (cambio_pos / tiempo_diff) * 3.6  # m/s a km/h
+            distancia_m = haversine(lat1, lon1, lat2, lon2)
+            velocidad = (distancia_m / tiempo_diff) * 3.6  # m/s a km/h
             velocidades.append(velocidad)
     
     if velocidades:
@@ -283,7 +292,7 @@ def analizar_buses_activos(db: BusDatabase) -> Dict[str, Any]:
         if bus_id is None or posicion is None:
             continue
 
-        vel, datos_usados = calcular_velocidad_bus(db, bus_id, posicion)
+        vel, datos_usados = calcular_velocidad_bus(db, bus_id)
 
         # IGNORAR buses sin suficientes datos históricos (menos de 2 posiciones)
         # No tienen historial para calcular velocidad real
