@@ -44,6 +44,123 @@ def is_valid_pattern_value(value: Optional[str]) -> bool:
     return bool(value and str(value).strip() not in invalid)
 
 
+def _calcular_puntaje_dia(dia_semana: str, csv_path: str) -> tuple:
+    """
+    Calcula puntos adicionales basados en la frecuencia histórica del día de la semana.
+    Retorna: (puntos, explicacion)
+    """
+    if not dia_semana:
+        return (0, "")
+    
+    alertas = load_alert_dataset(csv_path)
+    
+    if not alertas:
+        return (0, "")
+    
+    dias_counter = Counter(
+        a.get('dia_semana', '').lower().strip()
+        for a in alertas
+        if is_valid_pattern_value(a.get('dia_semana'))
+    )
+    
+    if not dias_counter:
+        return (0, "")
+    
+    dia_normalizado = dia_semana.lower().strip()
+    total_alertas = sum(dias_counter.values())
+    promedio = total_alertas / len(dias_counter) if dias_counter else 0
+    
+    if promedio == 0:
+        return (0, "")
+    
+    alertas_dia = dias_counter.get(dia_normalizado, 0)
+    ratio = alertas_dia / promedio if promedio > 0 else 0
+    
+    if ratio >= 1.5:
+        puntos = 15
+        explicacion = f"{dia_semana.capitalize()} históricamente tiene {int((ratio-1)*100)}% más alertas que el promedio"
+    elif ratio >= 1.25:
+        puntos = 10
+        explicacion = f"{dia_semana.capitalize()} históricamente tiene {int((ratio-1)*100)}% más alertas que el promedio"
+    elif ratio > 1.0:
+        puntos = 5
+        explicacion = f"{dia_semana.capitalize()} tiene más alertas que el promedio histórico"
+    else:
+        puntos = 0
+        explicacion = ""
+    
+    return (puntos, explicacion)
+
+
+def _calcular_descuento_dia_no_historico(
+    dia_consulta: str, 
+    csv_path: str, 
+    ubicacion: Optional[str] = None,
+    dia_usuario_especifico: bool = False
+) -> tuple:
+    """
+    Calcula descuento si el día de consulta no coincide con el día histórico más frecuente.
+    Solo aplica si el usuario NO especificó un día manualmente.
+    Si hay ubicacion, filtra las alertas por esa zona específica.
+    
+    Retorna: (descuento, explicacion)
+    """
+    if dia_usuario_especifico:
+        return (0, "")
+    
+    if not dia_consulta:
+        return (0, "")
+    
+    alertas = load_alert_dataset(csv_path)
+    
+    if not alertas:
+        return (0, "")
+    
+    if ubicacion:
+        alertas = [a for a in alertas if ubicacion.lower() in a.get('ubicacion', '').lower()]
+    
+    if not alertas:
+        return (0, "")
+    
+    dias_counter = Counter(
+        a.get('dia_semana', '').lower().strip()
+        for a in alertas
+        if is_valid_pattern_value(a.get('dia_semana'))
+    )
+    
+    if not dias_counter:
+        return (0, "")
+    
+    dia_mas_historico = dias_counter.most_common(1)[0][0]
+    alertas_dia_historico = dias_counter.get(dia_mas_historico, 0)
+    
+    if alertas_dia_historico == 0:
+        return (0, "")
+    
+    dia_consulta_normalizado = dia_consulta.lower().strip()
+    alertas_dia_consulta = dias_counter.get(dia_consulta_normalizado, 0)
+    
+    ratio = alertas_dia_consulta / alertas_dia_historico if alertas_dia_historico > 0 else 0
+    
+    descuento = 0
+    explicacion = ""
+    
+    if ratio < 0.10:
+        descuento = 30
+        explicacion = f"Descuento: hoy ({dia_consulta.capitalize()}) tiene casi 0 alertas vs {dia_mas_historico.capitalize()} que tiene {alertas_dia_historico}"
+    elif ratio < 0.25:
+        descuento = 25
+        explicacion = f"Descuento: hoy ({dia_consulta.capitalize()}) tiene {int(ratio*100)}% de alertas vs {dia_mas_historico.capitalize()}"
+    elif ratio < 0.50:
+        descuento = 20
+        explicacion = f"Descuento: hoy ({dia_consulta.capitalize()}) tiene {int(ratio*100)}% de alertas vs {dia_mas_historico.capitalize()}"
+    elif ratio < 0.75:
+        descuento = 10
+        explicacion = f"Descuento: hoy ({dia_consulta.capitalize()}) tiene menos alertas que {dia_mas_historico.capitalize()}"
+    
+    return (descuento, explicacion)
+
+
 def analyze_patterns(csv_path: str) -> Dict:
     alertas = load_alert_dataset(csv_path)
     
@@ -118,7 +235,21 @@ def predict_risk_from_patterns(
     dia_semana: Optional[str] = None,
     tipo_evento: Optional[str] = None
 ) -> Dict:
+    from datetime import datetime
+    
     alertas = load_alert_dataset(csv_path)
+
+    dia_actual = None
+    dia_usuario_especifico = False
+    if not dia_semana:
+        dias_map = {
+            0: "lunes", 1: "martes", 2: "miercoles", 3: "jueves",
+            4: "viernes", 5: "sabado", 6: "domingo"
+        }
+        dia_actual = dias_map.get(datetime.now().weekday())
+        dia_semana = dia_actual
+    else:
+        dia_usuario_especifico = True
 
     if not alertas:
         return {
@@ -227,12 +358,19 @@ def predict_risk_from_patterns(
     servicios = [s for a in filtered_alertas for s in a.get('servicios_afectados', []) if is_valid_pattern_value(s)]
     estaciones = [e for a in filtered_alertas for e in a.get('estaciones_afectadas', []) if is_valid_pattern_value(e)]
 
-    if servicios:
-        puntaje_total += 5
-    if estaciones:
-        puntaje_total += 5
+    puntos_dia, explicacion_dia = _calcular_puntaje_dia(dia_semana, csv_path)
+    if puntos_dia > 0:
+        puntaje_total += puntos_dia
+        patrones_detectados.append(explicacion_dia)
 
-    probabilidad = min(95, puntaje_total)
+    descuento, explicacion_descuento = _calcular_descuento_dia_no_historico(
+        dia_semana, csv_path, ubicacion, dia_usuario_especifico
+    )
+    if descuento > 0:
+        puntaje_total -= descuento
+        patrones_detectados.append(explicacion_descuento)
+
+    probabilidad = min(95, max(0, puntaje_total))
 
     if probabilidad >= 66:
         nivel_riesgo = "alto"

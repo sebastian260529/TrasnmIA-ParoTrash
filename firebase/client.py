@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import List, Dict, Any, Optional
 from firebase_admin import firestore
 
-from src.firebase import init_firebase, get_collection
+from firebase import init_firebase, get_collection
 
 # Distance in meters for consensus
 RADIO_CONSENSUS = 100  # meters

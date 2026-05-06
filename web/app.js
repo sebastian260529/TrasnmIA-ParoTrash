@@ -88,12 +88,6 @@ function renderResultado(data) {
     tipoIa.textContent = ia.tipo_dato || '';
     tipoIa.className = 'tipo-dato ' + getTipoDatoClass(ia.tipo_dato);
 
-    var geo = fuentes.geolocalizacion || {};
-    document.getElementById('score-geo').textContent = geo.score || 0;
-    var tipoGeo = document.getElementById('tipo-geo');
-    tipoGeo.textContent = geo.tipo_dato || '';
-    tipoGeo.className = 'tipo-dato ' + getTipoDatoClass(geo.tipo_dato);
-
     const explDiv = document.getElementById('explicacion-content');
     explDiv.innerHTML = '';
     (data.explicacion || []).forEach(function(e) {
@@ -226,8 +220,7 @@ async function cargarEstadoFuentes() {
             { key: 'buses', label: 'Buses / Anomalias' },
             { key: 'whatsapp_transmilenio', label: 'WhatsApp / TransMilenio' },
             { key: 'firebase', label: 'Firebase / Reportes' },
-            { key: 'ia_texto', label: 'IA / Texto' },
-            { key: 'geolocalizacion', label: 'Geolocalizacion' }
+            { key: 'ia_texto', label: 'IA / Texto' }
         ];
         fuentes.forEach(function(f) {
             var info = estado[f.key] || {};
@@ -254,5 +247,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     cargarEstadoFuentes();
     setStatus('Listo - Escribe una zona y analiza el riesgo con datos reales');
-    addChatMessage('bot', 'Bienvenido a TransmIA ParoTrash. El sistema usa datos reales disponibles: buses, historico TransMilenio, reportes Firebase (si configurado), analisis de texto y geolocalizacion. Escribe una zona y haz clic en "Analizar riesgo".');
+    addChatMessage('bot', 'Bienvenido a TransmIA ParoTrash. El sistema usa 4 fuentes de datos: buses (tiempo real), WhatsApp TransMilenio, reportes Firebase y analisis de texto historico. Escribe una zona y haz clic en "Analizar riesgo".');
 });

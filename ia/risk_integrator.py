@@ -26,11 +26,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 TM_CSV_PATH = os.path.join(BASE_DIR, "data", "tm_alerts_sample.csv")
 
 PESOS = {
-    "buses": 0.30,
-    "whatsapp_transmilenio": 0.25,
+    "buses": 0.35,
+    "whatsapp_transmilenio": 0.30,
     "firebase_reportes": 0.20,
-    "ia_texto": 0.15,
-    "geolocalizacion": 0.10
+    "ia_texto": 0.15
 }
 
 PALABRAS_CLAVE_RIESGO = [
@@ -588,13 +587,6 @@ def calcular_prediccion_integrada(zona: str, db: BusDatabase = None, reportes_de
         fuentes_usadas.append("ia_texto")
     else:
         fuentes_no_disponibles.append("ia_texto")
-    geo = _score_geolocalizacion(zona, buses, firebase, whatsapp)
-    if geo["advertencia"]:
-        errores_fuentes.append({"fuente": "geolocalizacion", "error": geo["advertencia"]})
-    if geo["score"] > 0:
-        fuentes_usadas.append("geolocalizacion")
-    else:
-        fuentes_no_disponibles.append("geolocalizacion")
     alerta_oficial_hoy = whatsapp.get("alerta_oficial_hoy", False)
     whatsapp_tipo = whatsapp.get("tipo_dato", "")
     estado_evento = whatsapp.get("estado_evento", "sin_alerta_hoy")
@@ -611,8 +603,7 @@ def calcular_prediccion_integrada(zona: str, db: BusDatabase = None, reportes_de
             (buses.get("score", 0) * PESOS["buses"]) +
             (whatsapp.get("score", 0) * PESOS["whatsapp_transmilenio"]) +
             (firebase.get("score", 0) * PESOS["firebase_reportes"]) +
-            (ia_texto.get("score", 0) * PESOS["ia_texto"]) +
-            (geo.get("score", 0) * PESOS["geolocalizacion"])
+            (ia_texto.get("score", 0) * PESOS["ia_texto"])
         )
         prob = min(95, max(0, round(prob)))
         score_ponderado = prob
@@ -641,8 +632,6 @@ def calcular_prediccion_integrada(zona: str, db: BusDatabase = None, reportes_de
             explicacion.append(firebase["detalle"])
         if ia_texto["score"] > 0:
             explicacion.append(ia_texto["detalle"])
-        if geo["score"] > 0:
-            explicacion.append(geo["detalle"])
     if not explicacion:
         explicacion.append(f"No se detectaron anomalias en {zona} con los datos reales disponibles. El riesgo es bajo.")
 
@@ -675,13 +664,14 @@ def calcular_prediccion_integrada(zona: str, db: BusDatabase = None, reportes_de
             "Siempre consulte fuentes oficiales de TransMilenio."
         ]
 
+    zone_info = get_zone_coords(zona)
     ubicacion_inteligente = {
         "zona_consultada": zona,
-        "direccion_normalizada": geo.get("zona_normalizada") or normalize_address(zona),
-        "coordenadas_estimadas": geo.get("coordenadas_estimadas", {"lat": None, "lon": None}) if geo.get("coordenadas_estimadas") else {"lat": None, "lon": None},
-        "buses_cercanos": geo.get("buses_cercanos", 0),
-        "reportes_cercanos": geo.get("reportes_cercanos", 0),
-        "alertas_historicas_cercanas": geo.get("alertas_historicas_cercanas", 0)
+        "direccion_normalizada": zone_info["direccion_normalizada"] if zone_info else normalize_address(zona),
+        "coordenadas_estimadas": {"lat": zone_info["lat"], "lon": zone_info["lon"]} if zone_info else {"lat": None, "lon": None},
+        "buses_cercanos": buses.get("cantidad", 0),
+        "reportes_cercanos": firebase.get("cantidad", 0),
+        "alertas_historicas_cercanas": whatsapp.get("coincidencias", 0)
     }
 
     whatsapp_out = {
@@ -734,16 +724,6 @@ def calcular_prediccion_integrada(zona: str, db: BusDatabase = None, reportes_de
                 "detalle": ia_texto["detalle"],
                 "palabras_clave": ia_texto["palabras_clave"],
                 "advertencia": ia_texto["advertencia"]
-            },
-            "geolocalizacion": {
-                "score": geo["score"],
-                "tipo_dato": geo["tipo_dato"],
-                "detalle": geo["detalle"],
-                "zona_normalizada": geo.get("zona_normalizada") or normalize_address(zona),
-                "coordenadas_estimadas": geo.get("coordenadas_estimadas", {"lat": None, "lon": None}) if geo.get("coordenadas_estimadas") else {"lat": None, "lon": None},
-                "buses_cercanos": geo.get("buses_cercanos", 0),
-                "reportes_cercanos": geo.get("reportes_cercanos", 0),
-                "alertas_historicas_cercanas": geo.get("alertas_historicas_cercanas", 0)
             }
         },
         "ubicacion_inteligente": ubicacion_inteligente,
@@ -845,16 +825,5 @@ def get_fuentes_estado() -> Dict[str, Any]:
         estado["ia_texto"] = {
             "disponible": False,
             "detalle": f"Error en modulo IA/texto: {str(e)}"
-        }
-    try:
-        estado["geolocalizacion"] = {
-            "disponible": True,
-            "zonas_conocidas": len(ZONAS_CONOCIDAS),
-            "detalle": f"Fallback local de zonas de Bogota activo con {len(ZONAS_CONOCIDAS)} zonas."
-        }
-    except Exception as e:
-        estado["geolocalizacion"] = {
-            "disponible": False,
-            "detalle": f"Error en modulo de geolocalizacion: {str(e)}"
         }
     return estado

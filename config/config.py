@@ -5,9 +5,9 @@ EDITAR ESTE ARCHIVO PARA PERSONALIZAR EL SISTEMA.
 
 import os
 
-# Ruta base del proyecto (3 niveles arriba)
-# src/config/config.py -> src -> ChatBot
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Ruta base del proyecto (2 niveles arriba desde config/)
+# config/config.py -> ChatBot
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Credenciales para la API (obtener de la app TransMiApp o inspectores)
 API_CONFIG = {

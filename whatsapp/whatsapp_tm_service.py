@@ -317,7 +317,7 @@ def matches_zone(texto: str, zona: str) -> bool:
 
 def parse_tm_alert(texto: str) -> Dict:
     try:
-        from src.ia.tm_alert_parser import TMAlertParserService
+        from ia.tm_alert_parser import TMAlertParserService
         parser = TMAlertParserService()
         return parser.parse_tm_alert(texto)
     except Exception:

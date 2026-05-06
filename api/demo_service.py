@@ -4,10 +4,10 @@ import time
 from datetime import datetime
 from typing import Dict, List, Any
 
-from src.database import BusDatabase
-from src.geo.location_service import get_zone_coords
+from database.database import BusDatabase
+from ubicacion_buses.location_service import get_zone_coords
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 _demo_state: Dict[str, Any] = {
     "buses_demo": [],

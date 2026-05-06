@@ -228,9 +228,9 @@ def analizar_buses_activos(db: BusDatabase) -> Dict[str, Any]:
         
         vel, datos_usados = calcular_velocidad_bus(db, bus_id, posicion)
         
-        # Excluir buses en portales
-        if esta_en_zona_portal(bus) or es_destino_portal(bus):
-            continue
+        # No excluimos buses en portales - analizamos todos los buses
+        # if esta_en_zona_portal(bus) or es_destino_portal(bus):
+        #     continue
         
         bus_con_vel = {
             "bus_id": bus_id,
@@ -389,10 +389,10 @@ def detectar_anomalias(db: BusDatabase, force_refresh: bool = False) -> Dict[str
     trancones = detectar_trancones(buses_lentos)
     varados = detectar_buses_varados(buses_detenidos, buses_lentos)
     
-    # Contar buses excluidos por portales
+    # Ya no excluimos buses por portales - analizamos todos los buses
     captura = db.obtener_captura_actual()
-    buses_no_portal = filtrar_buses_no_portal(captura)
-    excluidos = len(captura) - len(buses_no_portal)
+    buses_no_portal = captura  # Sin filtrar portales
+    excluidos = 0  # Ya no excluimos nadie por portal
     
     resultado = {
         "timestamp": ahora.isoformat(),

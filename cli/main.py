@@ -11,11 +11,11 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from src.api import BusTracker
-from src.database import BusDatabase
-from src.config import RUTAS_CSV, MONITOR_INTERVAL, DATABASE_PATH
-from src.analisis import generar_resumen, formatear_salida, obtener_configuracion, mostrar_grafica, guardar_grafica
-from src.analisis.anomaly_detector import detectar_anomalias, formatear_salida as formatear_anomalias
+from api import BusTracker
+from database.database import BusDatabase
+from config.config import RUTAS_CSV, MONITOR_INTERVAL, DATABASE_PATH
+from analisis import generar_resumen, formatear_salida, obtener_configuracion, mostrar_grafica, guardar_grafica
+from analisis.anomaly_detector import detectar_anomalias, formatear_salida as formatear_anomalias
 
 
 def cmd_prueba(tracker: BusTracker, args):

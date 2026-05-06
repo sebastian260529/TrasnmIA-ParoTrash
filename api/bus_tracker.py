@@ -14,9 +14,9 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional, Callable
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from src.database import BusDatabase
-from src.config import API_CONFIG, RUTAS_CSV, MONITOR_INTERVAL, DATABASE_PATH, MOSTRAR_GRAFICA
-from src.analisis import generar_resumen, formatear_salida, generar_grafica, analizar_captura_actual, analizar_buses_directo
+from database.database import BusDatabase
+from config.config import API_CONFIG, RUTAS_CSV, MONITOR_INTERVAL, DATABASE_PATH, MOSTRAR_GRAFICA
+from analisis import generar_resumen, formatear_salida, generar_grafica, analizar_captura_actual, analizar_buses_directo
 
 logger = logging.getLogger(__name__)
 
@@ -198,18 +198,21 @@ class BusTracker:
         errores = []
         todos_los_buses = []
 
-        logger.info(f"Iniciando escaneo PARALELO de {len(rutas)} rutas...")
+        logger.info(f"========================================")
+        logger.info(f"INICIANDO ESCANEO PARALELO de {len(rutas)} rutas")
+        logger.info(f"========================================")
 
         def procesar_ruta(item):
             ruta = item["ruta"]
             nombre = item["nombre"]
+            logger.debug(f"Consultando ruta {ruta} - {nombre}...")
             buses = self.obtener_buses(ruta, nombre)
             return {"ruta": ruta, "nombre": nombre, "buses": buses}
 
         with ThreadPoolExecutor(max_workers=40) as executor:
             futures = {executor.submit(procesar_ruta, item): item for item in rutas}
 
-            for future in as_completed(futures):
+            for i, future in enumerate(as_completed(futures)):
                 try:
                     resultado = future.result()
                     buses = resultado["buses"]
@@ -220,15 +223,18 @@ class BusTracker:
                     if buses:
                         g = self.guardar_buses(buses)
                         guardados += g
-                        logger.info(f"  {resultado['ruta']} - {resultado['nombre']}: {total_buses_captura} buses, {g} guardados")
+                        logger.info(f"[{i+1}/{len(rutas)}] {resultado['ruta']} - {resultado['nombre']}: {total_buses_captura} buses, {g} guardados")
                     else:
-                        logger.info(f"  {resultado['ruta']} - {resultado['nombre']}: sin buses activos")
+                        logger.info(f"[{i+1}/{len(rutas)}] {resultado['ruta']} - {resultado['nombre']}: sin buses activos")
                         errores.append(f"{resultado['ruta']} - {resultado['nombre']}")
                 except Exception as e:
                     item = futures[future]
-                    logger.error(f"Error consultando {item['ruta']} - {item['nombre']}: {e}")
+                    logger.error(f"ERROR en {item['ruta']} - {item['nombre']}: {e}")
 
-        logger.info(f"Escaneo completado: {total_buses} buses, {guardados} guardados")
+        logger.info(f"========================================")
+        logger.info(f"ESCANEO COMPLETADO: {total_buses} buses encontrados, {guardados} guardados en DB")
+        logger.info(f"Rutas sin buses: {len(errores)}")
+        logger.info(f"========================================")
 
         captura_anterior = self.db.obtener_captura_actual()
         if captura_anterior:
@@ -236,7 +242,7 @@ class BusTracker:
 
         self.db.limpiar_captura_actual()
         self.db.guardar_captura_actual(todos_los_buses)
-        logger.info(f"Captura actual actualizada: {len(todos_los_buses)} buses")
+        logger.info(f"Captura actual actualizada: {len(todos_los_buses)} buses en memoria")
 
         return {
             "buses": todos_los_buses,
@@ -302,12 +308,16 @@ class BusTracker:
                     densidad = analisis.get("densidad", {})
                     velocidad = analisis.get("velocidad", {})
                     fig = generar_grafica(buses_para_grafica, densidad, velocidad,
-                                         titolo=f"Transmilenio - Captura #{contador}")
+                                         titulo=f"Transmilenio - Captura #{contador}")
                     if fig:
                         import matplotlib.pyplot as plt
-                        fig.savefig(f"captura_{contador}.png", dpi=100)
+                        # Guardar en carpeta data/graficos/
+                        graficos_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "..", "data", "graficos")
+                        os.makedirs(graficos_dir, exist_ok=True)
+                        ruta_grafica = os.path.join(graficos_dir, f"captura_{contador}.png")
+                        fig.savefig(ruta_grafica, dpi=100)
                         plt.close(fig)
-                        logger.info(f"Grafica guardada: captura_{contador}.png")
+                        logger.info(f"Grafica guardada: {ruta_grafica}")
                 except Exception as e:
                     logger.warning(f"No se pudo generar grafica: {e}")
 

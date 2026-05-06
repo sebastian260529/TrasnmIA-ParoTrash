@@ -2,12 +2,12 @@
 Servidor unificado FastAPI.
 Combina detección automática + reportes de usuarios.
 
-Ejecutar: python -m src.api.server
+Ejecutar: python -m api.server
 """
 
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -39,10 +39,10 @@ if os_module.path.exists(WEB_DIR):
     app.mount("/static", StaticFiles(directory=WEB_DIR), name="static")
 
 # Imports
-from src.config import MONITOR_INTERVAL
-from src.database import BusDatabase
-from src.analisis.anomaly_detector import detectar_anomalias
-from src.analisis.ponderador import (
+from config.config import MONITOR_INTERVAL
+from database.database import BusDatabase
+from analisis.anomaly_detector import detectar_anomalias
+from analisis.ponderador import (
     detectar_anomalias_ponderadas,
     get_resumen_ponderado,
     get_pesos,
@@ -51,19 +51,19 @@ from src.analisis.ponderador import (
     get_reportes_activos,
     calcular_score_prediccion_ia
 )
-from src.firebase.client import (
+from firebase.client import (
     create_reporte,
     votacion,
     get_all_reportes,
     get_reporte_by_id
 )
-from src.analisis.graficos import generar_mapa_buses, generar_mapa_anomalias, generar_todas_graficas
-from src.api.bus_tracker import BusTracker
-from src.ia.prediction_service import PredictionService
-from src.ia.schemas import PrediccionRequest, ReporteAppInput
-from src.ia.risk_integrator import calcular_prediccion_integrada, get_fuentes_estado
-from src.ia.whatsapp_tm_service import get_tm_whatsapp_messages, find_recent_alerts_for_zone, now_colombia, is_whapi_configured
-from src.api.demo_service import (
+from analisis.graficos import generar_mapa_buses, generar_mapa_anomalias, generar_todas_graficas
+from api.bus_tracker import BusTracker
+from ia.prediction_service import PredictionService
+from ia.schemas import PrediccionRequest, ReporteAppInput
+from ia.risk_integrator import calcular_prediccion_integrada, get_fuentes_estado
+from whatsapp.whatsapp_tm_service import get_tm_whatsapp_messages, find_recent_alerts_for_zone, now_colombia, is_whapi_configured
+from api.demo_service import (
     crear_escenario_demo, limpiar_demo,
     get_demo_state, get_demo_reportes, get_demo_alertas, get_demo_buses
 )
@@ -518,20 +518,40 @@ def iniciar_monitoreo_background():
     """Inicia el monitoreo en background."""
     global monitoreo_activo, tracker
     try:
+        print("[MONITOREO] ====================================")
+        print("[MONITOREO] Creando BusTracker...")
         tracker = BusTracker()
+        
+        # Verificar que se crearon las rutas
+        if not tracker.rutas:
+            print("[MONITOREO] ERROR: No se encontraron rutas en el CSV")
+            print("[MONITOREO] Verificar que data/rutas.csv exista y tenga datos")
+            return
+            
+        print(f"[MONITOREO] Rutas cargadas: {len(tracker.rutas)} rutas")
+        print(f"[MONITOREO] Iniciando escaneo cada {MONITOR_INTERVAL}s...")
+        print("[MONITOREO] ====================================")
+        
         monitoreo_activo = True
-        print(f"[MONITOREO] Iniciando cada {MONITOR_INTERVAL}s...")
         
         while monitoreo_activo:
             try:
+                print(f"[MONITOREO] [{datetime.now().strftime('%H:%M:%S')}] Iniciando escaneo de rutas...")
                 resultado = tracker.escanear_rutas()
-                print(f"[MONITOREO] {resultado['total_buses_encontrados']} buses, {resultado['guardados']} guardados")
+                print(f"[MONITOREO] [{datetime.now().strftime('%H:%M:%S')}] COMPLETADO: {resultado['total_buses_encontrados']} buses encontrados, {resultado['guardados']} guardados en DB")
             except Exception as e:
-                print(f"[MONITOREO] Error: {e}")
+                print(f"[MONITOREO] [{datetime.now().strftime('%H:%M:%S')}] Error en escaneo: {e}")
+                import traceback
+                traceback.print_exc()
             
+            print(f"[MONITOREO] [{datetime.now().strftime('%H:%M:%S')}] Durmiendo {MONITOR_INTERVAL}s...")
             time.sleep(MONITOR_INTERVAL)
     except Exception as e:
-        print(f"[MONITOREO] Error fatal: {e}")
+        print(f"[MONITOREO] ====================================")
+        print(f"[MONITOREO] Error FATAL al iniciar monitoreo: {e}")
+        import traceback
+        traceback.print_exc()
+        print("[MONITOREO] ====================================")
         monitoreo_activo = False
 
 @app.get("/monitoreo")

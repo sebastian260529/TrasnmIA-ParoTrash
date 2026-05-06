@@ -7,8 +7,8 @@ import os
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
-# Ruta absoluta para gráficos
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Ruta absoluta para gráficos (2 niveles desde analisis/graficos.py)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GRAFICOS_DIR = os.path.join(BASE_DIR, "data", "graficos")
 
 try:

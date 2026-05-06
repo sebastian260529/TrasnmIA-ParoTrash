@@ -7,15 +7,15 @@ import os
 from typing import Dict, Any, List
 from datetime import datetime
 
-from src.database import BusDatabase
-from src.analisis.anomaly_detector import detectar_anomalias
-from src.firebase.client import get_all_reportes, get_reporte_by_id
-from src.ia.prediction_service import PredictionService
-from src.ia.schemas import PrediccionRequest
+from database.database import BusDatabase
+from analisis.anomaly_detector import detectar_anomalias
+from firebase.client import get_all_reportes, get_reporte_by_id
+from ia.prediction_service import PredictionService
+from ia.schemas import PrediccionRequest
 
 # Get base directory
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-PONDERADO_CONFIG = os.path.join(BASE_DIR, "src", "config", "ponderado.json")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PONDERADO_CONFIG = os.path.join(BASE_DIR, "config", "ponderado.json")
 
 # Default weights
 PESOS_DEFAULT = {
