@@ -1,0 +1,40 @@
+{
+  "respuesta": "Hola, gracias por comunicarte con TransMilenio. Con respecto a tu consulta sobre la estación **Caracas con Calle 11 Sur**, te informo el estado actual según nuestras fuentes:\n\n- **Buses GPS**: No tenemos información disponible en este momento por un error técnico en el sistema.\n- **Reportes de usuarios (Firebase)**: No se han recibido reportes de usuarios en esta zona.\n- **WhatsApp TransMilenio**: No hay datos reportados a través de este canal para esta ubicación.\n- **Datos históricos**: No contamos con registros de novedades previas en este sector.\n- **Predicción de riesgo**: El nivel de riesgo estimado es **bajo (10%)**, lo que sugiere que no se anticipan alteraciones significativas en el servicio.\n\nEn resumen, **no hay indicios de un paro o interrupción del servicio en la Caracas con 11 Sur**. Sin embargo, te recomiendo estar atento a los canales oficiales de TransMilenio por si surge alguna novedad. ¿Hay algo más en lo que pueda ayudarte?",
+  "zona": "Avenida Caracas",
+  "coords": {
+    "lat": 4.625,
+    "lon": -74.085
+  },
+  "probabilidad": 10,
+  "nivel_riesgo": "bajo",
+  "fuentes": {
+    "buses": {
+      "datos": [],
+      "mensaje": "Error al buscar buses: 'str' object has no attribute 'get'",
+      "anomalias": []
+    },
+    "firebase": {
+      "datos": [],
+      "mensaje": "No hay reportes de usuarios en esta zona"
+    },
+    "whatsapp": {
+      "datos": [],
+      "mensaje": "No hay datos de WhatsApp para esta zona"
+    },
+    "historico": {
+      "datos": [],
+      "mensaje": "No hay datos históricos de esta zona"
+    }
+  },
+  "fuentes_usadas": [
+    "buses"
+  ],
+  "fuentes_no_disponibles": [],
+  "explicacion": [
+    "Análisis basado en zona: Avenida Caracas"
+  ],
+  "recomendaciones": [
+    "Mantente informado sobre las actualizaciones en tiempo real."
+  ],
+  "alerta_oficial_hoy": false
+}

@@ -1,0 +1,330 @@
+{
+  "timestamp": "2026-05-06T19:43:06.680800",
+  "actualizacion_en_segundos": 60,
+  "buses_activos": 1104,
+  "anomalias": [
+    {
+      "tipo": "TRANCON",
+      "coordenadas": {
+        "latitud": 4.575562,
+        "longitud": -74.119926
+      },
+      "porcentaje_confianza": 100.0,
+      "buses_involucrados": 29,
+      "radio_m": 300,
+      "detalles": {
+        "velocidad_promedio_kmh": 14.5,
+        "buses_lentos": 29,
+        "direccion": "ARRIBA"
+      },
+      "buses_ids": [
+        "41055",
+        "41097",
+        "44439",
+        "45562",
+        "7158",
+        "7046",
+        "42409",
+        "43074",
+        "10023",
+        "41074",
+        "7058",
+        "40435",
+        "44481",
+        "10028",
+        "41171",
+        "41472",
+        "41140",
+        "41045",
+        "40404",
+        "42425"
+      ]
+    },
+    {
+      "tipo": "TRANCON",
+      "coordenadas": {
+        "latitud": 4.617765,
+        "longitud": -74.095009
+      },
+      "porcentaje_confianza": 100.0,
+      "buses_involucrados": 132,
+      "radio_m": 300,
+      "detalles": {
+        "velocidad_promedio_kmh": 13.8,
+        "buses_lentos": 132,
+        "direccion": "ARRIBA"
+      },
+      "buses_ids": [
+        "10115",
+        "10045",
+        "41512",
+        "44412",
+        "7059",
+        "40016",
+        "41125",
+        "10007",
+        "42447",
+        "44452",
+        "41450",
+        "10112",
+        "44446",
+        "43008",
+        "41073",
+        "40493",
+        "45632",
+        "41033",
+        "42439",
+        "43166"
+      ]
+    },
+    {
+      "tipo": "TRANCON",
+      "coordenadas": {
+        "latitud": 4.652946,
+        "longitud": -74.065359
+      },
+      "porcentaje_confianza": 100.0,
+      "buses_involucrados": 38,
+      "radio_m": 300,
+      "detalles": {
+        "velocidad_promedio_kmh": 10.7,
+        "buses_lentos": 38,
+        "direccion": "ARRIBA"
+      },
+      "buses_ids": [
+        "43425",
+        "41182",
+        "42450",
+        "43099",
+        "42434",
+        "45559",
+        "43107",
+        "44486",
+        "14123",
+        "10025",
+        "43412",
+        "43409",
+        "43407",
+        "41115",
+        "44471",
+        "43169",
+        "40461",
+        "10150",
+        "14006",
+        "44472"
+      ]
+    },
+    {
+      "tipo": "TRANCON",
+      "coordenadas": {
+        "latitud": 4.673216,
+        "longitud": -74.067991
+      },
+      "porcentaje_confianza": 100.0,
+      "buses_involucrados": 32,
+      "radio_m": 300,
+      "detalles": {
+        "velocidad_promedio_kmh": 12.8,
+        "buses_lentos": 32,
+        "direccion": "ARRIBA"
+      },
+      "buses_ids": [
+        "14134",
+        "41054",
+        "40025",
+        "40520",
+        "42446",
+        "43161",
+        "41049",
+        "41079",
+        "40495",
+        "7014",
+        "42433",
+        "43055",
+        "10049",
+        "41037",
+        "41070",
+        "45569",
+        "14033",
+        "44513",
+        "7301",
+        "43439"
+      ]
+    },
+    {
+      "tipo": "TRANCON",
+      "coordenadas": {
+        "latitud": 4.692483,
+        "longitud": -74.076558
+      },
+      "porcentaje_confianza": 100.0,
+      "buses_involucrados": 15,
+      "radio_m": 300,
+      "detalles": {
+        "velocidad_promedio_kmh": 16.4,
+        "buses_lentos": 15,
+        "direccion": "ARRIBA"
+      },
+      "buses_ids": [
+        "10107",
+        "41124",
+        "45581",
+        "43117",
+        "7138",
+        "43100",
+        "43020",
+        "43160",
+        "42405",
+        "43176",
+        "40560",
+        "42477",
+        "40410",
+        "42461",
+        "7045"
+      ]
+    },
+    {
+      "tipo": "TRANCON",
+      "coordenadas": {
+        "latitud": 4.707833,
+        "longitud": -74.08967
+      },
+      "porcentaje_confianza": 100.0,
+      "buses_involucrados": 10,
+      "radio_m": 300,
+      "detalles": {
+        "velocidad_promedio_kmh": 13.1,
+        "buses_lentos": 10,
+        "direccion": "ARRIBA"
+      },
+      "buses_ids": [
+        "41453",
+        "7090",
+        "40031",
+        "41087",
+        "43091",
+        "42478",
+        "43080",
+        "41150",
+        "43135",
+        "41076"
+      ]
+    },
+    {
+      "tipo": "TRANCON",
+      "coordenadas": {
+        "latitud": 4.569041,
+        "longitud": -74.125372
+      },
+      "porcentaje_confianza": 100.0,
+      "buses_involucrados": 14,
+      "radio_m": 300,
+      "detalles": {
+        "velocidad_promedio_kmh": 13.8,
+        "buses_lentos": 14,
+        "direccion": "ABAJO"
+      },
+      "buses_ids": [
+        "43110",
+        "40081",
+        "41147",
+        "10136",
+        "10184",
+        "42467",
+        "41184",
+        "41500",
+        "41044",
+        "40045",
+        "41103",
+        "45433",
+        "10119",
+        "44433"
+      ]
+    },
+    {
+      "tipo": "TRANCON",
+      "coordenadas": {
+        "latitud": 4.609453,
+        "longitud": -74.094856
+      },
+      "porcentaje_confianza": 100.0,
+      "buses_involucrados": 305,
+      "radio_m": 300,
+      "detalles": {
+        "velocidad_promedio_kmh": 12.2,
+        "buses_lentos": 305,
+        "direccion": "ABAJO"
+      },
+      "buses_ids": [
+        "41200",
+        "7152",
+        "40509",
+        "40447",
+        "44435",
+        "43133",
+        "41174",
+        "40467",
+        "10141",
+        "41611",
+        "41518",
+        "7100",
+        "40051",
+        "41042",
+        "43404",
+        "43149",
+        "41095",
+        "43084",
+        "41028",
+        "41120"
+      ]
+    },
+    {
+      "tipo": "TRANCON",
+      "coordenadas": {
+        "latitud": 4.662602,
+        "longitud": -74.074041
+      },
+      "porcentaje_confianza": 100.0,
+      "buses_involucrados": 18,
+      "radio_m": 300,
+      "detalles": {
+        "velocidad_promedio_kmh": 15.1,
+        "buses_lentos": 18,
+        "direccion": "ABAJO"
+      },
+      "buses_ids": [
+        "43116",
+        "43147",
+        "41582",
+        "254120",
+        "43046",
+        "41148",
+        "41635",
+        "41136",
+        "42441",
+        "43128",
+        "41412",
+        "42501",
+        "7070",
+        "14026",
+        "14162",
+        "14023",
+        "41620",
+        "43111"
+      ]
+    }
+  ],
+  "resumen": {
+    "total_anomalias": 9,
+    "manifestaciones": 0,
+    "trancones": 9,
+    "buses_varados": 0,
+    "buses_sin_movimiento": 3,
+    "buses_lentos": 642,
+    "buses_normales": 459,
+    "buses_sin_datos_historicos": 0,
+    "velocidad_promedio_kmh": 19.4
+  },
+  "excluidos_portal": 0,
+  "from_cache": true
+}

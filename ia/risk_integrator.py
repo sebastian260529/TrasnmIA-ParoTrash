@@ -804,3 +804,135 @@ def get_fuentes_estado() -> Dict[str, Any]:
             "detalle": f"Error en modulo IA/texto: {str(e)}"
         }
     return estado
+
+
+import math
+
+def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    R = 6371000
+    phi1, phi2 = math.radians(lat1), math.radians(lat2)
+    dphi = math.radians(lat2 - lat1)
+    dlambda = math.radians(lon2 - lon1)
+    a = math.sin(dphi/2)**2 + math.cos(phi1)*math.cos(phi2)*math.sin(dlambda/2)**2
+    return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1-a))
+
+def buscar_buses_por_coords(lat: float, lon: float, radio: int = 500, db=None) -> Dict[str, Any]:
+    """
+    Busca anomalías de buses dentro de un radio de coordenadas.
+    """
+    try:
+        from analisis.anomaly_detector import detectar_anomalias
+        if db:
+            result = detectar_anomalias(db)
+        else:
+            from database.database import BusDatabase
+            db = BusDatabase()
+            result = detectar_anomalias(db)
+
+        anomalias = result.get("anomalias", []) if isinstance(result, dict) else result
+        anomalias_cercanas = []
+        for a in anomalias:
+            coords = a.get("coordenadas", {})
+            a_lat = coords.get("latitud")
+            a_lon = coords.get("longitud")
+            if a_lat and a_lon:
+                dist = haversine_distance(lat, lon, a_lat, a_lon)
+                if dist <= radio:
+                    a["distancia_m"] = round(dist, 1)
+                    anomalias_cercanas.append(a)
+
+        if anomalias_cercanas:
+            return {
+                "datos": anomalias_cercanas,
+                "mensaje": f"{len(anomalias_cercanas)} anomalías detectadas en radio de {radio}m",
+                "anomalias": anomalias_cercanas
+            }
+        return {"datos": [], "mensaje": f"No hay anomalías de buses en radio de {radio}m", "anomalias": []}
+    except Exception as e:
+        return {"datos": [], "mensaje": f"Error al buscar buses: {str(e)}", "anomalias": []}
+
+def _normalize_text(text: str) -> str:
+    import unicodedata
+    text = text.lower().strip()
+    text = unicodedata.normalize('NFD', text)
+    text = ''.join(c for c in text if unicodedata.category(c) != 'Mn')
+    import re
+    text = re.sub(r'[^\w\s]', ' ', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
+def similarity_jaccard(s1: str, s2: str) -> float:
+    s1 = _normalize_text(s1)
+    s2 = _normalize_text(s2)
+    if not s1 or not s2:
+        return 0.0
+    set1 = set(s1.split())
+    set2 = set(s2.split())
+    if not set1 or not set2:
+        return 0.0
+    interseccion = len(set1 & set2)
+    union = len(set1 | set2)
+    return interseccion / union if union > 0 else 0.0
+
+def buscar_whatsapp_por_texto(texto_busqueda: str, threshold: float = 0.7) -> Dict[str, Any]:
+    """
+    Busca mensajes de WhatsApp cuyo texto matchee >70% con el texto de búsqueda.
+    """
+    try:
+        from whatsapp.whatsapp_tm_service import get_tm_whatsapp_messages
+        mensajes = get_tm_whatsapp_messages(limit=100)
+
+        mensajes_encontrados = []
+        for msg in mensajes:
+            texto_msg = msg.get("texto", "")
+            if similarity_jaccard(texto_busqueda, texto_msg) >= threshold:
+                mensajes_encontrados.append(msg)
+
+        if mensajes_encontrados:
+            return {
+                "datos": mensajes_encontrados,
+                "mensaje": f"{len(mensajes_encontrados)} mensajes de WhatsApp que mencionan esta zona"
+            }
+        return {"datos": [], "mensaje": "No hay datos de WhatsApp para esta zona"}
+    except Exception as e:
+        return {"datos": [], "mensaje": f"Error al buscar WhatsApp: {str(e)}"}
+
+def buscar_historico_por_texto(texto_busqueda: str, threshold: float = 0.25) -> Dict[str, Any]:
+    """
+    Busca en datos históricos cuyo texto matchee >25% con el texto de búsqueda.
+    También busca por palabras clave individuales.
+    """
+    try:
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        csv_path = os.path.join(base_dir, "data", "tm_alerts_sample.csv")
+        if not os.path.exists(csv_path):
+            csv_path = os.path.join(base_dir, "data", "alertas_historicas.csv")
+
+        if not os.path.exists(csv_path):
+            return {"datos": [], "mensaje": "No hay datos históricos disponibles"}
+
+        import csv
+        alertas_encontradas = []
+        palabras_clave = _normalize_text(texto_busqueda).split()
+
+        with open(csv_path, 'r', encoding='utf-8', errors='ignore') as f:
+            reader = csv.DictReader(f, delimiter=';')
+            for row in reader:
+                texto = row.get('texto_original', '') or row.get('contenido', '')
+                texto_norm = _normalize_text(texto)
+
+                # Check similarity or if any key word appears
+                score = similarity_jaccard(texto_busqueda, texto)
+                tiene_palabra = any(p in texto_norm for p in palabras_clave if len(p) > 3)
+
+                if score >= threshold or tiene_palabra:
+                    alertas_encontradas.append(row)
+
+        if alertas_encontradas:
+            return {
+                "datos": alertas_encontradas[:10],
+                "mensaje": f"{len(alertas_encontradas)} alertas históricas relacionadas"
+            }
+        return {"datos": [], "mensaje": "No hay datos históricos de esta zona"}
+    except Exception as e:
+        return {"datos": [], "mensaje": f"Error al buscar histórico: {str(e)}"}

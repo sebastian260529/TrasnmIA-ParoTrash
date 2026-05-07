@@ -1,0 +1,149 @@
+{
+  "respuesta": "Actualmente, el Portal El Dorado presenta un nivel de afectación **bajo**, con una probabilidad del **18.0%** de que se presenten novedades en el servicio. Esto significa que, en general, la operación está fluyendo con normalidad.\n\n- **Estado de buses:** No se reportan novedades en los buses cercanos al portal.\n- **Reportes de usuarios:** No hay quejas o alertas reportadas por otros pasajeros en la zona.\n- **Historial:** Aunque hay un historial de 9 alertas previas, en este momento no hay indicios de problemas significativos.\n\nTe recomiendo mantener tu viaje con tranquilidad, pero siempre atento a los avisos oficiales en las pantallas del portal o en las estaciones. ¡Buen viaje!",
+  "zona": "Portal El Dorado",
+  "coords": {
+    "lat": 4.6805232,
+    "lon": -74.1205859
+  },
+  "probabilidad": 18.0,
+  "nivel_riesgo": "bajo",
+  "fuentes": {
+    "buses": {
+      "datos": [],
+      "mensaje": "No hay anomalías de buses en radio de 500m",
+      "anomalias": []
+    },
+    "firebase": {
+      "datos": [],
+      "mensaje": "No hay reportes de usuarios en esta zona"
+    },
+    "whatsapp": {
+      "datos": [],
+      "mensaje": "No hay datos de WhatsApp para esta zona"
+    },
+    "historico": {
+      "datos": [
+        {
+          "ubicacion": "Avenida Caracas con Calle 26",
+          "ubicacion_normalizada": "Avenida Caracas con Calle 6",
+          "tipo_evento": "Manifestacion o protesta",
+          "causa": "manifestacion",
+          "dia_semana": "Lunes",
+          "franja_horaria": "manana",
+          "usuarios_afectados": "45000",
+          "estaciones_afectadas": "Hortua|Narino|Fucha",
+          "servicios_afectados": "C30|G30|H30|J30",
+          "texto_original": "Manifestacion en Avenida Caracas genera bloqueo total"
+        },
+        {
+          "ubicacion": "Portal Eldorado",
+          "ubicacion_normalizada": "Portal Eldorado",
+          "tipo_evento": "Manifestacion o protesta",
+          "causa": "manifestacion",
+          "dia_semana": "Martes",
+          "franja_horaria": "tarde",
+          "usuarios_afectados": "32000",
+          "estaciones_afectadas": "Portal Eldorado|Modelia",
+          "servicios_afectados": "K30|L30|M80",
+          "texto_original": "Protesta en Portal Eldorado afecta toda la troncal"
+        },
+        {
+          "ubicacion": "Portal Norte",
+          "ubicacion_normalizada": "Portal Norte",
+          "tipo_evento": "Manifestacion o protesta",
+          "causa": "protesta",
+          "dia_semana": "Jueves",
+          "franja_horaria": "tarde",
+          "usuarios_afectados": "38000",
+          "estaciones_afectadas": "Portal Norte|Calle 161|Toberin",
+          "servicios_afectados": "H30|J30|B80",
+          "texto_original": "Protesta en Portal Norte por condiciones laborales"
+        },
+        {
+          "ubicacion": "Universidad Distrital sede La Macarena",
+          "ubicacion_normalizada": "Universidad Distrital sede La Macarena",
+          "tipo_evento": "Manifestacion o protesta",
+          "causa": "protesta",
+          "dia_semana": "Miercoles",
+          "franja_horaria": "manana",
+          "usuarios_afectados": "22000",
+          "estaciones_afectadas": "Universidades|CityU|Las Nieves",
+          "servicios_afectados": "J30|C30",
+          "texto_original": "Manifestacion universitaria en Distrital Macarena"
+        },
+        {
+          "ubicacion": "Portal Sur",
+          "ubicacion_normalizada": "Portal Sur",
+          "tipo_evento": "Cierre o estaciones sin operar",
+          "causa": "cierre",
+          "dia_semana": "Sabado",
+          "franja_horaria": "tarde",
+          "usuarios_afectados": "18000",
+          "estaciones_afectadas": "Portal Sur|Banderas",
+          "servicios_afectados": "H30|J30|M80",
+          "texto_original": "Portal Sur cerrado por mantenimiento emergencia"
+        },
+        {
+          "ubicacion": "Portal Eldorado",
+          "ubicacion_normalizada": "Portal Eldorado",
+          "tipo_evento": "Desvios operacionales",
+          "causa": "desvio",
+          "dia_semana": "Martes",
+          "franja_horaria": "tarde",
+          "usuarios_afectados": "25000",
+          "estaciones_afectadas": "Portal Eldorado|Normandia|Avenida Rojas",
+          "servicios_afectados": "K30|L30|J30",
+          "texto_original": "Desvios masivos en Portal Eldorado por obra"
+        },
+        {
+          "ubicacion": "Avenida Caracas con Carrera 12B",
+          "ubicacion_normalizada": "Avenida Caracas con Carrera 12B",
+          "tipo_evento": "Manifestacion o protesta",
+          "causa": "protesta",
+          "dia_semana": "Jueves",
+          "franja_horaria": "noche",
+          "usuarios_afectados": "35000",
+          "estaciones_afectadas": "Flores|Calle 63|Calle 57|Hortua",
+          "servicios_afectados": "C30|H30|J30",
+          "texto_original": "Nueva protesta en Avenida Caracas Carrera 12B"
+        },
+        {
+          "ubicacion": "Portal Eldorado",
+          "ubicacion_normalizada": "Portal Eldorado",
+          "tipo_evento": "Manifestacion o protesta",
+          "causa": "manifestacion",
+          "dia_semana": "Viernes",
+          "franja_horaria": "manana",
+          "usuarios_afectados": "42000",
+          "estaciones_afectadas": "Portal Eldorado|Modelia|Normandia",
+          "servicios_afectados": "K30|L30|M80|J30",
+          "texto_original": "Gran manifestacion paraliza Portal Eldorado"
+        },
+        {
+          "ubicacion": "Portal Americas",
+          "ubicacion_normalizada": "Portal Americas",
+          "tipo_evento": "Desvios operacionales",
+          "causa": "desvio",
+          "dia_semana": "Viernes",
+          "franja_horaria": "tarde",
+          "usuarios_afectados": "12000",
+          "estaciones_afectadas": "Portal Americas|Banderas|Mandalay",
+          "servicios_afectados": "J30|H30",
+          "texto_original": "Desvios en Portal Americas por reparaciones"
+        }
+      ],
+      "mensaje": "9 alertas históricas relacionadas"
+    }
+  },
+  "fuentes_usadas": [
+    "buses"
+  ],
+  "fuentes_no_disponibles": [],
+  "explicacion": [
+    "Análisis basado en zona: Portal El Dorado"
+  ],
+  "recomendaciones": [
+    "Mantente informado sobre las actualizaciones en tiempo real."
+  ],
+  "alerta_oficial_hoy": false
+}

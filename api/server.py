@@ -61,7 +61,9 @@ from analisis.graficos import generar_mapa_buses, generar_mapa_anomalias, genera
 from api.bus_tracker import BusTracker
 from ia.prediction_service import PredictionService
 from ia.schemas import PrediccionRequest, ReporteAppInput
-from ia.risk_integrator import calcular_prediccion_integrada, get_fuentes_estado
+from ia.risk_integrator import calcular_prediccion_integrada, get_fuentes_estado, buscar_buses_por_coords
+from ia.geocode_service import geocode
+from ia.deepseek_service import generar_respuesta
 from whatsapp.whatsapp_tm_service import get_tm_whatsapp_messages, find_recent_alerts_for_zone, now_colombia, is_whapi_configured
 from api.demo_service import (
     crear_escenario_demo, limpiar_demo,
@@ -106,65 +108,50 @@ class ChatbotRequest(BaseModel):
     pregunta: str
     zona: str = ""
 
-# Mapa de alias a nombre canonico de zona
+# Mapa de alias a nombre canonico de zona (con coordenadas)
 ZONE_ALIASES = {
-    # Universidad Pedagogica
-    "universidad pedagogica": "Universidad Pedagogica",
-    "universidad pedagógica": "Universidad Pedagogica",
-    "la pedagogica": "Universidad Pedagogica",
-    "u pedagogica": "Universidad Pedagogica",
-    "pedagogica": "Universidad Pedagogica",
-    # Universidad Distrital
-    "universidad distrital": "Universidad Distrital",
-    "u distrital": "Universidad Distrital",
-    "distrital": "Universidad Distrital",
-    # Portal Eldorado
-    "portal eldorado": "Portal Eldorado",
-    "portal el dorado": "Portal Eldorado",
-    "eldorado": "Portal Eldorado",
-    "el dorado": "Portal Eldorado",
-    # Avenida Caracas
-    "avenida caracas": "Avenida Caracas",
-    "av caracas": "Avenida Caracas",
-    "caracas": "Avenida Caracas",
-    "troncal caracas": "Avenida Caracas",
-    # Portal Norte
-    "portal norte": "Portal Norte",
-    # Portal Sur
-    "portal sur": "Portal Sur",
-    # Portal Americas
-    "portal americas": "Portal Americas",
-    "portal américas": "Portal Americas",
-    "americas": "Portal Americas",
-    # Portal 20 de Julio
-    "portal 20 de julio": "Portal 20 de Julio",
-    "20 de julio": "Portal 20 de Julio",
-    # Avenida Circunvalar
-    "avenida circunvalar con calle 26": "Avenida Circunvalar con Calle 26",
-    "avenida circunvalar": "Avenida Circunvalar con Calle 26",
-    "circunvalar": "Avenida Circunvalar con Calle 26",
-    # Carrera 5 con Calle 28
-    "carrera 5 con calle 28": "Carrera 5 con Calle 28",
-    "cra 5 con calle 28": "Carrera 5 con Calle 28",
-    "cra 5 cll 28": "Carrera 5 con Calle 28",
-    "cra 5 calle 28": "Carrera 5 con Calle 28",
-    "carrera 5 con cll 28": "Carrera 5 con Calle 28",
-    "carrera 5 cll 28": "Carrera 5 con Calle 28",
-    # Carrera 7 con Calle 28
-    "carrera 7 con calle 28": "Carrera 7 con Calle 28",
-    "cra 7 con calle 28": "Carrera 7 con Calle 28",
-    "cra 7 cll 28": "Carrera 7 con Calle 28",
-    "carrera septima con calle 28": "Carrera 7 con Calle 28",
-    "carrera séptima con calle 28": "Carrera 7 con Calle 28",
-    # Calle 72 con Carrera 11
-    "calle 72 con carrera 11": "Calle 72 con Carrera 11",
-    "cll 72 con cra 11": "Calle 72 con Carrera 11",
-    # Calle 12B con Carrera 10
-    "calle 12b con carrera 10": "Calle 12B con Carrera 10",
-    # Carrera 10 con Calle 24
-    "carrera 10 con calle 24": "Carrera 10 con Calle 24",
-    # Carrera 30 con Avenida Chile
-    "carrera 30 con avenida chile": "Carrera 30 con Avenida Chile",
+    "universidad pedagogica": {"nombre": "Universidad Pedagogica", "lat": 4.627, "lon": -74.065},
+    "universidad pedagógica": {"nombre": "Universidad Pedagogica", "lat": 4.627, "lon": -74.065},
+    "la pedagogica": {"nombre": "Universidad Pedagogica", "lat": 4.627, "lon": -74.065},
+    "u pedagogica": {"nombre": "Universidad Pedagogica", "lat": 4.627, "lon": -74.065},
+    "pedagogica": {"nombre": "Universidad Pedagogica", "lat": 4.627, "lon": -74.065},
+    "universidad distrital": {"nombre": "Universidad Distrital", "lat": 4.636, "lon": -74.069},
+    "u distrital": {"nombre": "Universidad Distrital", "lat": 4.636, "lon": -74.069},
+    "distrital": {"nombre": "Universidad Distrital", "lat": 4.636, "lon": -74.069},
+    "portal eldorado": {"nombre": "Portal Eldorado", "lat": 4.684, "lon": -74.073},
+    "portal el dorado": {"nombre": "Portal Eldorado", "lat": 4.684, "lon": -74.073},
+    "eldorado": {"nombre": "Portal Eldorado", "lat": 4.684, "lon": -74.073},
+    "el dorado": {"nombre": "Portal Eldorado", "lat": 4.684, "lon": -74.073},
+    "avenida caracas": {"nombre": "Avenida Caracas", "lat": 4.625, "lon": -74.085},
+    "av caracas": {"nombre": "Avenida Caracas", "lat": 4.625, "lon": -74.085},
+    "caracas": {"nombre": "Avenida Caracas", "lat": 4.625, "lon": -74.085},
+    "troncal caracas": {"nombre": "Avenida Caracas", "lat": 4.625, "lon": -74.085},
+    "portal norte": {"nombre": "Portal Norte", "lat": 4.757, "lon": -74.050},
+    "portal sur": {"nombre": "Portal Sur", "lat": 4.536, "lon": -74.126},
+    "portal americas": {"nombre": "Portal Americas", "lat": 4.686, "lon": -74.142},
+    "portal récordades": {"nombre": "Portal Americas", "lat": 4.686, "lon": -74.142},
+    "americas": {"nombre": "Portal Americas", "lat": 4.686, "lon": -74.142},
+    "portal 20 de julio": {"nombre": "Portal 20 de Julio", "lat": 4.562, "lon": -74.131},
+    "20 de julio": {"nombre": "Portal 20 de Julio", "lat": 4.562, "lon": -74.131},
+    "avenida circunvalar con calle 26": {"nombre": "Avenida Circunvalar con Calle 26", "lat": 4.648, "lon": -74.075},
+    "avenida circunvalar": {"nombre": "Avenida Circunvalar con Calle 26", "lat": 4.648, "lon": -74.075},
+    "circunvalar": {"nombre": "Avenida Circunvalar con Calle 26", "lat": 4.648, "lon": -74.075},
+    "carrera 5 con calle 28": {"nombre": "Carrera 5 con Calle 28", "lat": 4.649, "lon": -74.062},
+    "cra 5 con calle 28": {"nombre": "Carrera 5 con Calle 28", "lat": 4.649, "lon": -74.062},
+    "cra 5 cll 28": {"nombre": "Carrera 5 con Calle 28", "lat": 4.649, "lon": -74.062},
+    "cra 5 calle 28": {"nombre": "Carrera 5 con Calle 28", "lat": 4.649, "lon": -74.062},
+    "carrera 5 con cll 28": {"nombre": "Carrera 5 con Calle 28", "lat": 4.649, "lon": -74.062},
+    "carrera 5 cll 28": {"nombre": "Carrera 5 con Calle 28", "lat": 4.649, "lon": -74.062},
+    "carrera 7 con calle 28": {"nombre": "Carrera 7 con Calle 28", "lat": 4.650, "lon": -74.056},
+    "cra 7 con calle 28": {"nombre": "Carrera 7 con Calle 28", "lat": 4.650, "lon": -74.056},
+    "cra 7 cll 28": {"nombre": "Carrera 7 con Calle 28", "lat": 4.650, "lon": -74.056},
+    "carrera septima con calle 28": {"nombre": "Carrera 7 con Calle 28", "lat": 4.650, "lon": -74.056},
+    "carrera séptima con calle 28": {"nombre": "Carrera 7 con Calle 28", "lat": 4.650, "lon": -74.056},
+    "calle 72 con carrera 11": {"nombre": "Calle 72 con Carrera 11", "lat": 4.654, "lon": -74.060},
+    "cll 72 con cra 11": {"nombre": "Calle 72 con Carrera 11", "lat": 4.654, "lon": -74.060},
+    "calle 12b con carrera 10": {"nombre": "Calle 12B con Carrera 10", "lat": 4.636, "lon": -74.072},
+    "carrera 10 con calle 24": {"nombre": "Carrera 10 con Calle 24", "lat": 4.643, "lon": -74.068},
+    "carrera 30 con avenida chile": {"nombre": "Carrera 30 con Avenida Chile", "lat": 4.663, "lon": -74.054},
 }
 
 def _normalize_question(texto: str) -> str:
@@ -173,11 +160,24 @@ def _normalize_question(texto: str) -> str:
     import unicodedata
     texto = texto.lower().strip()
     texto = unicodedata.normalize('NFD', texto)
-    texto = texto.encode('ascii', 'ignore').decode('ascii')
+    texto = ''.join(c for c in texto if unicodedata.category(c) != 'Mn')
     texto = re.sub(r'[^\w\s]', ' ', texto)
-    texto = re.sub(r'\s+', ' ', texto)
-    return texto.strip()
+    texto = re.sub(r'\s+', ' ', texto).strip()
+    return texto
 
+def similarity_jaccard(s1: str, s2: str) -> float:
+    """Calcula similaridad entre dos textos usando Jaccard."""
+    s1 = _normalize_question(s1)
+    s2 = _normalize_question(s2)
+    if not s1 or not s2:
+        return 0.0
+    set1 = set(s1.split())
+    set2 = set(s2.split())
+    if not set1 or not set2:
+        return 0.0
+    interseccion = len(set1 & set2)
+    union = len(set1 | set2)
+    return interseccion / union if union > 0 else 0.0
 
 def extraer_zona_desde_pregunta(pregunta: str):
     if not pregunta:
@@ -186,11 +186,20 @@ def extraer_zona_desde_pregunta(pregunta: str):
 
     best = None
     best_len = 0
-    for alias, canonico in ZONE_ALIASES.items():
+    best_score = 0
+
+    for alias, zona_data in ZONE_ALIASES.items():
         alias_norm = _normalize_question(alias)
+
         if alias_norm in pregunta_norm:
             if len(alias_norm) > best_len:
-                best = canonico
+                best = zona_data
+                best_len = len(alias_norm)
+        else:
+            score = similarity_jaccard(pregunta_norm, alias_norm)
+            if score >= 0.7 and score > best_score:
+                best = zona_data
+                best_score = score
                 best_len = len(alias_norm)
 
     return best
@@ -222,17 +231,32 @@ def prediccion_integrada(zona: str = "Portal Eldorado"):
 @app.post("/chatbot")
 def chatbot_endpoint(request: ChatbotRequest):
     try:
-        zona_desde_pregunta = extraer_zona_desde_pregunta(request.pregunta)
-        zona_body = request.zona.strip() if request.zona.strip() else None
+        coords = None
+        zona_nombre = None
 
-        if zona_desde_pregunta:
-            zona = zona_desde_pregunta
-        elif zona_body:
-            zona = zona_body
-        else:
+        geo_result = geocode(request.pregunta)
+        if geo_result:
+            coords = (geo_result["lat"], geo_result["lon"])
+            zona_nombre = geo_result["direccion_formateada"].split(",")[0]
+
+        if not coords:
+            zona_match = extraer_zona_desde_pregunta(request.pregunta)
+            zona_body = request.zona.strip() if request.zona.strip() else None
+
+            if zona_match:
+                zona_nombre = zona_match.get("nombre")
+                coords = (zona_match.get("lat"), zona_match.get("lon"))
+            elif zona_body:
+                zona_nombre = zona_body
+                zona_match = extraer_zona_desde_pregunta(zona_body)
+                if zona_match:
+                    coords = (zona_match.get("lat"), zona_match.get("lon"))
+
+        if not coords:
             return {
-                "respuesta": "No detecto una zona en tu pregunta. Por favor escribe el nombre de una zona o lugar de Bogota (ej: Portal Eldorado, Universidad Pedagogica, Avenida Caracas).",
+                "respuesta": "No pude identificar una zona válida en tu pregunta. Por favor escribe el nombre de una zona o lugar de Bogotá (ej: Portal Eldorado, Avenida Caracas, Calle 30).",
                 "zona": None,
+                "coords": None,
                 "probabilidad": 0,
                 "nivel_riesgo": "sin_zona",
                 "fuentes": {},
@@ -242,65 +266,68 @@ def chatbot_endpoint(request: ChatbotRequest):
                 "recomendaciones": ["Escribe el nombre de una zona para analizar el riesgo."],
                 "alerta_oficial_hoy": False
             }
-        resultado = calcular_prediccion_integrada(
-            zona=zona,
-            db=db
-        )
-        prob = resultado["probabilidad"]
-        nivel = resultado["nivel_riesgo"]
-        fuentes = resultado.get("fuentes", {})
-        fuentes_usadas = resultado.get("fuentes_usadas", [])
-        fuentes_no_disp = resultado.get("fuentes_no_disponibles", [])
-        alerta_oficial = resultado.get("alerta_oficial_hoy", False)
-        estado_evento = resultado.get("estado_evento") or "sin_alerta_hoy"
-        whatsapp_tm = fuentes.get("whatsapp_transmilenio", {})
-        respuesta = f"Para {zona} el sistema estima riesgo {nivel} del {prob}%. "
 
-        if alerta_oficial and whatsapp_tm.get("tipo_dato") == "real_hoy":
-            if estado_evento == "restablecido":
-                respuesta += "El ultimo aviso oficial de TransMilenio indica restablecimiento del servicio, "
-                respuesta += "cancelacion de desvios o retorno a recorridos habituales. "
-                respuesta += "No necesariamente confirma un paro si la alerta no lo dice literalmente."
-            elif estado_evento == "activo":
-                respuesta += "El ultimo aviso oficial de TransMilenio indica una afectacion activa."
-                ultimo = whatsapp_tm.get("ultimo_mensaje_oficial", {})
-                if ultimo and ultimo.get("texto"):
-                    txt = ultimo["texto"].lower()
-                    if "cierre" in txt or "cierran" in txt:
-                        respuesta += " Reporta cierre de estaciones."
-                    if "desvio" in txt:
-                        respuesta += " Reporta desvios."
-                    if "manifestacion" in txt or "protesta" in txt:
-                        respuesta += " Reporta manifestacion."
-                respuesta += " Esto indica una afectacion importante; no necesariamente confirma un paro si la alerta no lo dice literalmente."
-            elif estado_evento == "parcial":
-                respuesta += "El ultimo aviso oficial indica operacion parcial o retrasos. "
-                respuesta += "No necesariamente confirma un paro si la alerta no lo dice literalmente."
-            else:
-                respuesta += "Se detecto una alerta oficial reciente de TransMilenio."
+        # Buscar zona más cercana en ZONE_ALIASES para usar el sistema de predicción
+        zona_mas_cercana = None
+        mejor_dist = float('inf')
+        for alias, zona_data in ZONE_ALIASES.items():
+            z_lat = zona_data.get("lat")
+            z_lon = zona_data.get("lon")
+            if z_lat and z_lon:
+                dist = ((z_lat - coords[0])**2 + (z_lon - coords[1])**2)**0.5
+                if dist < mejor_dist and dist < 0.05:
+                    mejor_dist = dist
+                    zona_mas_cercana = zona_data.get("nombre")
+
+        # Usar el sistema de predicción completo
+        if zona_mas_cercana:
+            resultado_prediccion = calcular_prediccion_integrada(zona=zona_mas_cercana, db=db)
+            prob = resultado_prediccion.get("probabilidad", 0)
+            nivel = resultado_prediccion.get("nivel_riesgo", "bajo")
+            fuentes = resultado_prediccion.get("fuentes", {})
+            fuentes_usadas = resultado_prediccion.get("fuentes_usadas", [])
+            fuentes_no_disp = resultado_prediccion.get("fuentes_no_disponibles", [])
+            alerta_oficial = resultado_prediccion.get("alerta_oficial_hoy", False)
         else:
-            if fuentes_usadas:
-                if prob > 0:
-                    respuesta += "La prediccion combina: " + ", ".join(fuentes_usadas) + ". "
-                else:
-                    respuesta += "No se detectaron senales de riesgo en las fuentes disponibles. "
-            if fuentes_no_disp:
-                respuesta += "Fuentes sin datos: " + ", ".join(fuentes_no_disp) + ". "
-            recs = resultado.get("recomendaciones", [])
-            if recs:
-                respuesta += recs[0]
+            prob = 0
+            nivel = "bajo"
+            fuentes = {}
+            fuentes_usadas = []
+            fuentes_no_disp = []
+            alerta_oficial = False
+
+        # Construir datos para DeepSeek usando las fuentes del sistema
+        buses_fuente = fuentes.get("buses", {})
+        firebase_fuente = fuentes.get("firebase_reportes", {})
+        whatsapp_fuente = fuentes.get("whatsapp_transmilenio", {})
+        historico_fuente = fuentes.get("ia_texto", {})
+
+        datos_fuentes = {
+            "buses": {"mensaje": buses_fuente.get("detalle", "Sin datos")},
+            "firebase": {"mensaje": firebase_fuente.get("detalle", "Sin datos")},
+            "whatsapp": {"mensaje": whatsapp_fuente.get("detalle", "Sin datos")},
+            "historico": {"mensaje": historico_fuente.get("detalle", "Sin datos")},
+            "prediccion": {
+                "probabilidad": prob,
+                "nivel": nivel,
+                "zona": zona_mas_cercana or zona_nombre
+            }
+        }
+
+        respuesta_ia = generar_respuesta(request.pregunta, datos_fuentes)
+
         return {
-            "respuesta": respuesta,
-            "zona": resultado["zona"],
+            "respuesta": respuesta_ia,
+            "zona": zona_mas_cercana or zona_nombre,
+            "coords": {"lat": coords[0], "lon": coords[1]},
             "probabilidad": prob,
             "nivel_riesgo": nivel,
             "fuentes": fuentes,
             "fuentes_usadas": fuentes_usadas,
             "fuentes_no_disponibles": fuentes_no_disp,
-            "explicacion": resultado.get("explicacion", []),
-            "recomendaciones": resultado.get("recomendaciones", []),
-            "alerta_oficial_hoy": alerta_oficial,
-            "estado_evento": estado_evento
+            "explicacion": [f"Análisis basado en zona: {zona_mas_cercana or zona_nombre}"],
+            "recomendaciones": ["Mantente informado sobre las actualizaciones en tiempo real."],
+            "alerta_oficial_hoy": alerta_oficial
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
